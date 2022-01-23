@@ -138,9 +138,9 @@ USE_TZ = True
 #https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+#STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 #STATIC_URL = '/MEDIA/'
-STATIC_URL = 'https://s3.console.aws.amazon.com/s3/buckets/zusa?region=us-east-2&tab=objects/'
+#STATIC_URL = 'https://s3.console.aws.amazon.com/s3/buckets/zusa?region=us-east-2&tab=objects/'
 #MEDIA_URL='/Main/'
 STATICFILES_DIRS =[
    os.path.join(BASE_DIR,'static')
