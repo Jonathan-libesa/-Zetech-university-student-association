@@ -1,0 +1,11 @@
+{% load crispy_forms_tags %}
+<div class="modal-body">
+    <form method="POST" class="form__group" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+{% if request.user == career.Chairperson %}
+<p><a href="{% url 'followers' career.pk %}">Participants:</a>{{number_of_participants}}</p>
+{% endif %}
+{% if request.user == career.Parton %}
+<p><a href="{% url 'followers' career.pk %}">Participants:</a>{{number_of_participants}}</p>
+{% endif %}
+{% if is_following %}
+<form method="POST" action="{% url 'remove_follower' career.pk %}">
+ {% csrf_token %}
+ <button class="button">JIONED</button>
+</form>
+{% else %}
+<form method="POST" action="{% url 'add_followers' career.pk %}">
+ {% csrf_token %}
+ <button class="button">JION</button>
+</form>
+{% endif %}

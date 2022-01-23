@@ -1,0 +1,33 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% load crispy_forms_tags %}
+{% block title%} Add-Zetech-Team {%endblock%}
+{% block content %}
+<style>
+    body{
+        background-color:#add8e64a;
+    }
+    #card{
+        background-color:#ebeff5;
+    }
+</style>
+    <br>
+
+    <div class="container-fluid">
+    <!-- Content here -->
+        <div class="card p-2" id="card">
+            <div class="card-titler">
+                <h3 style="text-align:center;">Add/Edit Zetech Team</h3>
+            </div>
+                <form method="post" enctype="multipart/form-data"autocomplete="off" >
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div class="mb-7">
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                    </div>
+                <form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

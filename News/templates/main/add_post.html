@@ -1,0 +1,24 @@
+{% extends 'main/base.html'%}
+{% block content %}
+{%include 'main/navbar.html'%}
+ <div class="container">
+   <div class="row">
+	  	<div class="col-md-12">
+	  		<div class="form-group">
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{form.media}}
+					{{form.as_p}}
+					<button  class="btn btn-success">Submit</button>
+					<a href="{% url 'User' %}"class="btn btn-primary">Back</a>
+				</form>
+			</div>
+	  	</div>
+   </div>
+	<script>
+	 var name="{{user.id}}";
+	 document.getElementById("RegNo").value=name;
+	</script>
+	<!--  Scripts-->
+ </div>
+{% endblock %} 

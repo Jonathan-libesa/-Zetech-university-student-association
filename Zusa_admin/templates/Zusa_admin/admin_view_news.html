@@ -1,0 +1,46 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="{% static 'main/css/club.css' %}" rel="stylesheet">
+</head>
+<div class="row col-md-12 mb-2 justify-content-center">
+ <a  href="{% url 'add_news'%}" class="btn btn-info btn-block col-sm-4"><i class="fa fa-plus"></i> Create News</a>
+</div> 
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title" style="text-align: center;">NEWS AN ANOUNCEMENT</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Posted by:</th>
+          <th>Title</th>
+          <th>Body</th>
+          <th>created</th>
+          <th>Details</th>
+          <th>Delete</th>
+          
+        </tr>
+      </thead>
+      {% for new in news %}
+      <tr>
+        <td> {{new.Author}}</td>
+        <td> {{new.Subject}}</td>
+        <td> {{new.body|safe|slice:":40"}}</td>
+        <td> {{new.created_on}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'update_news' new.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-admin-news' new.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

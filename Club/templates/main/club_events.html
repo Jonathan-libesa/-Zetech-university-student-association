@@ -1,0 +1,86 @@
+{%extends 'main/base.html'%}
+{%load static%}
+{%block title%}
+Club-Events
+{%endblock%}
+{%block content%}
+<link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+<link href="{% static 'main/css/club.css' %}" rel="stylesheet">
+<link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
+  <br>
+   <!--Meet the team-->
+    <div class="container-fluid">
+        <div class="row welcome text-center">
+            <div class="col-12">
+              <h1 class="card-header">Events</h1>
+            </div>
+          <hr>
+        </div>
+    </div>
+
+    <!--cards-->
+    <br>
+<div class="container-fluid">
+    <div class="row padding">
+      {% for event in events%}
+        <div class="col-md-6">
+           <div class="card">
+             {% if event.Photo_Video_type_html == "image" %}
+                <img src="{{event.Photo_Video.url}}" class="card-img-top">
+             {% elif event.Photo_Video_type_html == "video" %}
+                <video  controls="controls" class="card-vd">
+                  <source src="{{event.Photo_Video.url}}" type="video/mp4">
+                </video>
+             {% endif %}
+                <div class="card-body">
+                    {% include 'main/delete_edit_event.html'%}
+                  <h3 class="card-header">{{event.Name}}</h3>
+                  <span class="filter-txt"><small><b><i class="fa fa-time">POSTED:</i>{{event.date_created|timesince}} ago</b></small></span>
+                  <hr class="divider"  style="max-width: calc(100%)">
+                  <span class="badge badge-success float-left px-3 pt-1 pb-1"> <b><i>Venue:<span class="filter-txt">{{event.Venue}}</span></i></b></span>
+                  <br>
+                  <p class="card-text">{{event.Description|safe}}</p>
+                  <hr class="divider"  style="max-width: calc(100%)">
+                  <span class="badge badge-info float-left px-3 pt-1 pb-1"> <b><i>Posted by: <span class="filter-txt">{{event.manager}}</span></i></b></span>
+                </div>
+            </div>
+        </div>
+       {% empty %}
+            <div class="col-md-12">
+               <div class="card">
+                    <div class="card-body">
+                      <hr class="divider"  style="max-width: calc(100%)">
+                      <br>
+                      <p class="card-text text-black "style="text-align: center;">NO EVENT TO DISPLAY</p>
+                      <hr class="divider"  style="max-width: calc(100%)">
+                    </div>
+                </div>
+            </div>
+       {% endfor %}
+    </div>
+</div>
+ {%include 'main/pagination.html'%}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

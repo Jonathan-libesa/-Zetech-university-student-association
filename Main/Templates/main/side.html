@@ -1,0 +1,23 @@
+{%load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    	<div class="container-fluid">
+	    	<a  class="navbar-brand"href="{% url 'home'%}"><img src="{% static 'main/imgs/logo.jpg'%}" width="100" height="30"></a>
+			</button>
+        {% if request.user.is_authenticated %}
+				<div class=" dropdown mr-1">
+         <a href="{% url 'account' %}" class="nav-link js-scroll-trigger"  id="account_settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.username}}  <i class="fa fa-angle-down"></i></a>
+          <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -0.5em;">
+            <a class="dropdown-item"  href="{% url 'User' %}"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i>
+            <a class="dropdown-item" href="{% url 'user_profile' %}" ><i class="fa fa-user-circle-o"></i>      Profile</a>
+            <a class="dropdown-item" href="{% url 'account' %}" ><i class="fa fa-cog"></i>  Account Setting</a>
+            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-power-off"></i>  Logout</a>
+            <i class="fal fa-tachometer-alt-fastest"></i>
+           </div>
+        </div>
+        {% endif %}
+</nav>
+
+
+
+
+

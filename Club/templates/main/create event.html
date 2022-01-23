@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+<title>{%block title%}Create- Event{%endblock%}</title>
+{% block content %}
+<!-- Main style sheet -->
+  <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+  <!--<link href="{% static 'main/css/stylee.css' %}" rel="stylesheet">--> 
+  <link href="{% static 'main/css/clubs.css' %}" rel="stylesheet"> 
+<title>Edit Club Information</title>
+
+<style>
+    body{
+        background-color:#add8e64a;
+    }
+    #card{
+        background-color:#ebeff5;
+    }
+</style>
+    <br>
+    <div class="container">
+    <!-- Content here -->
+        <div class="card p-3" id="card">
+            <div class="card-titler">
+                <h3 style="text-align:center;">ADD EVENT TO CLUB/EDIT EVENT</h3>
+            </div>
+                <form method="post" enctype="multipart/form-data"  class="form__group">
+                    {% csrf_token %}
+                 <tbody>
+                    <tr>
+                        <td>{{form|crispy}}</td>
+                        <br>
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                    </tr>
+                  </tbody>
+                <form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

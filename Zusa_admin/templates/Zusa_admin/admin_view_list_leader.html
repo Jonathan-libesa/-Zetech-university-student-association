@@ -1,0 +1,45 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!-- Custom css-->
+  <link href="{% static 'main/css/club.css' %}" rel="stylesheet">
+  <link href="{% static 'main/css/zuka_admin.css' %}" rel="stylesheet">
+  <div class="row col-md-12 mb-2 justify-content-center">
+    <a href="{% url 'add_Leader_admin' %}"class="btn btn-info btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create New Student Leader</a>
+  </div> 
+</head>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title" style="text-align:center;">STUDENT LEADER</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Photo</th>
+          <th>Category</th>
+          <th>Update</th>
+          <th>Delete</th>
+          
+        </tr>
+      </thead>
+      {% for leaders in leader %}
+      <tr>
+        <td>{{leaders.leader_Name}}</td>
+        <td> <img src="{{leaders.image.url}}" alt="Profile Pic" class="image" /></td>
+        <td>{{leaders.category}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'update_leader' leaders.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete_view_leader' leaders.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

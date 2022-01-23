@@ -1,0 +1,125 @@
+{%extends 'main/base.html'%}
+{%load static%}
+{%block content%}
+<link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
+ <!--slider image-->
+    <div id="slides" class="carousel slide" data-ride="carousel">
+	    <ul class="carousel-indicators">
+	      <li data-target="#slides" data-slide-to="0" class="active"></li>
+	      <li data-target="#slides" data-slide-to="1"></li>
+	      <li data-target="#slides" data-slide-to="2"></li>
+	    </ul>
+	    <div class="carousel-inner">
+	    	{% for pages in page %}
+		      <div class="carousel-item{% if forloop.counter0 == 0%} active {% endif %}">
+		        <img class="d-block w-100"src="{{ pages.image.url}}" alt="First slide">
+		          <div class="carousel-caption  d-md-block">
+		  		    <h1>{{pages.title}}</h1>
+		  		    <p>{{pages.sub_title}}</p>
+		   	    </div>
+		      </div>
+	      {% endfor %}
+	    </div>
+    </div>
+   <!--jumbotron-->
+    <div class="container-fluid padding">
+        <div class="row jumbotron">
+	        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+	          <p class="lead">The Zetech University Student Association Officially Portal to get information from your student leaders and interact with alumnae</p>
+	        </div>
+	        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+              <a href="{% url 'login'%}"><button  type="button" class="btn btn-outline-secondary btn-lg">LOGIN</button></a>
+	        </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">CREATE ACCOUNT AS:</button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create Account As</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h5 style="text-align: center;">STUDENT</h5>
+              <p>Please Use Zetech Student Email To As Your Email</p>
+              <a href="{% url 'student_page'%}" class="btn btn-success btn-lg" role="button" >Student</a>
+              <hr>
+              <h5 style="text-align:center;">Alumnae</h5>
+              <p>You Can Use Personal email Or Zetech Student Email </p>
+               <a href="{% url 'alumni_page' %}" class="btn btn-success btn-lg text-center" role="button">Alumnae</a>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+   <!--Meet the team-->
+   <hr>
+    <div class="container-fluid">
+	    <div class="row welcome text-center">
+	        <div class="col-12">
+	          <h1 class="display-4">Meet Zetech University Student Team</h1>
+	        </div>
+	    </div>
+    </div>
+
+    <!--cards-->
+    <div class="container-fluid">
+      <div class="row padding">
+        {% for teams in team %}
+        <div class="col-md-4">
+          <div class="card">
+            {% if teams.Photo_Video_type_html == "video" %}
+            <video  controls="controls" class="card-vd">
+               <source src="{{teams.Photo_Video.url}}" type="video/mp4">
+            </video>
+            {% elif teams.Photo_Video_type_html == "image" %}
+            <img src="{{teams.Photo_Video.url}}" alt="{{teams.Name}}" class="card-img-top" /></td>
+            {% endif %}
+            <div class="card-body">
+              <h3 class="card-title">{{teams.Name}}</h3>
+              <p class="card-text">{{teams.Bio}}</p>
+            </div>
+          </div>
+        </div>
+       {% endfor %}
+      </div>
+    </div>
+    
+   
+   <!--Two column section ZUSA RULES AND ORDERS-->
+    <div class="container-fluid padding">
+      <div class="row padding">
+        <div class="col-lg-6">
+          <h1>Our Constitution</h1>
+          <p>This constitution shall have full force of law to all ZUSA members at all faculties, schools, centers, campuses, institutes, and any other institutions of Zetech University as determined by the ZETECH University</p>
+           <h4>Our Objectives</h4>
+            <ul>
+	          	<li>To champion for the welfare of the students</li>
+	          	<li>To seek, enhance and maintain the freedom of conscience, expression, association, academic liberty and all the rights and privileges accruing to members by virtue of their humanity, age, status, sex, citizenship and any other relevant criteria.</li>
+	          	<li>in consultation with the University’s Management, to honor and Certify members of the Student body that have made outstanding contributions to the University in academic and co curricular   activities;</li>
+	          	<li>To provide a meaningful address of student concerns and perspectives through the Principle of democratic representation.</li>
+	          	<li>To develop positive relationships with the general public through participation in community service and other related projects;</li>
+	          	<li>To promote gender, human rights and social equity in policies on education in   ZUSA;</li>
+	          	<li>To foster the relationship between the student community and the university staff, UNIVERSITY management and the general public based on unity and understanding;</li>
+            </ul>
+          <br>
+        </div>
+        <div class="col-lg-6">
+          <img src="{% static 'main/imgs/logo.jpg'%}" class="imgs-fluid">
+        </div>
+      </div>
+   </div>
+
+
+
+
+    
+
+{% endblock %}
+

@@ -1,0 +1,75 @@
+{%extends 'main/base.html'%}
+{%load static%}
+<title>{% block title%} Leaders {% endblock %}</title>
+{%block content%}
+<link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+<link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
+  <br>
+   <!--Meet the team-->
+    <div class="container-fluid">
+        <div class="row welcome text-center">
+            <div class="col-12">
+              <h1 class="card-header">LEADERS</h1>
+            </div>
+          <hr>
+        </div>
+    </div>
+
+    <!--cards-->
+    <br>
+<div class="container-fluid">
+    <div class="row padding">
+      {% for leaders in leader %}
+        <div class="col-md-4">
+           <div class="card">
+                {% if leaders.image %}
+                 <img src="{{leaders.image.url}}" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                  <h3 class="card-header"><small>{{leaders.leader_Name}} {{leaders.leader_Reg_number}}</small></h3>
+                  <span><p class="card-text text-center">{{leaders.category}}</p></span>
+                  <hr class="divider"  style="max-width: calc(100%)">
+                  <p class="card-text">{{leaders.about|safe}}</p>
+                  <hr class="divider"  style="max-width: calc(100%)">
+                </div>
+            </div>
+            <br>
+        </div>
+       {% empty %}
+            <div class="col-md-12">
+               <div class="card">
+                    <div class="card-body">
+                      <hr class="divider"  style="max-width: calc(100%)">
+                      <br>
+                      <p class="card-text text-black "style="text-align: center;">NO LEADERS TO DISPLAY</p>
+                      <hr class="divider"  style="max-width: calc(100%)">
+                    </div>
+                </div>
+            </div>
+       {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

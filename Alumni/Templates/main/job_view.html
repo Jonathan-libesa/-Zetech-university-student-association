@@ -1,0 +1,41 @@
+{% extends 'main\base.html'%}
+{% load static %}
+{% block title%}Job {{career.job_title}}{% endblock %}
+{% block content %}
+<!-- Main style sheet -->
+    <link href="{% static 'main/css/main.css' %}" rel="stylesheet"> 
+<style>
+ body{
+    background: #7abecc !important;
+}
+</style>
+<header class="masthead">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end mb-4 page-title">
+                <h3 class="text-white">{{career.job_title}}</h3>
+                <hr/>
+            <div class="row col-md-12 mb-2 justify-content-center">
+               <span>
+                 <a href="#" class="badge badge-info float-left px-3 pt-1 pb-1" ><b><l>Posted by:{{career.author}}</l></b></a>
+                </span>
+            </div>   
+            </div>
+            
+        </div>
+    </div>
+</header>
+<div class=" container mt-3 pt-2 justify-content-center text-center ">
+    <div class="card mb-4">
+        <div class="card-body"> 
+            {% include 'main/edit_delete job.html' %}
+            <span class="filter-txt"><small><b><i class="fa fa-time">Posted:</i>{{career.date_created|timesince}} ago,</b></small></span>
+            <span class="filter-txt"><small><b><i class="fa fa-building"></i>{{career.company}}</b></small></span>
+            <span class="filter-txt"><small><b><i class="fa fa-map-marker"></i>{{career.location}}</b></small></span>
+             <p>{{career.Description|safe}}</p>
+            <hr class="divider"  style="max-width: calc(100%)">
+            <span class="filter-txt"><small><b><i class="fa fa-time">Updated:</i>{{career.updated|timesince}} ago,</b></small></span>
+        </div>
+    </div>
+</div>
+{%endblock%}

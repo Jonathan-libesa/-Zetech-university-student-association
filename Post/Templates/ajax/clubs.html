@@ -1,0 +1,19 @@
+{% for club in clubs %}
+            <tr class="product-box">
+            {% if club.profile_pic %}
+            <td><img class="profile-pic" src="{{club.profile_pic.url}}"></td>
+            {% endif %}
+             <td style="text-transform: lowercase;">{{club.Name}}</td>
+             {% if club.Chairperson %}
+             <td><a href="{% url 'user-profile' club.Chairperson.pk %}"><small>{{club.Chairperson}}</small></a></td>
+             {% elif club.Parton%}
+             <td><a href="{% url 'user-profile' club.Parton.pk %}"><small>{{club.Chairperson}}</small></a></td>
+             {% endif %}
+             <td><small><i>{{club.date_created}}</i></small></td>
+             <td><a class="btn btn-success btn-sm" href="{% url 'details' club.pk %}">View</a></td>
+            </tr>
+          {% empty %}
+            <tr>
+             <td colspan="8" class="text-center bg-warning">No Clubs</td>
+            </tr>
+{%endfor%}

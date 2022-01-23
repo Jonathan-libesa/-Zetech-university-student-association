@@ -1,0 +1,58 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% load static %}
+{% block title%}
+  Users
+{% endblock%}
+{% block content %}
+<div class="row col-md-12 mb-2 justify-content-center">
+<form class="form-inline">
+    <input type="search" class="form-control" placeholder=" search with username" name="query" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+</div>
+<br>
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="{% static 'main/css/clubs.css' %}" rel="stylesheet">
+  <div class="row col-md-12 mb-2 justify-content-center">
+  <a href="{% url 'admin-view-add-user'%}"class="btn btn-info btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create New User</a>
+</div> 
+</head>
+<!--Custom css-->
+   <link href="{% static 'main/css/zuka_admin.css' %}" rel="stylesheet">
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Users</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Registration_No</th>
+          <th>First_name</th>
+          <th>Last_name</th>
+          <th>Email</th>
+          <th>Email_verified</th>
+         
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {% for user in users %}
+      <tr>
+        <td>{{user.username}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.is_email_verified}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'update_user' user.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'admin-delete-user' user.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock content %}

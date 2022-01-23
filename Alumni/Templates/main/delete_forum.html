@@ -1,0 +1,12 @@
+{% extends 'main\base.html'%}
+{% block content%}
+<h1 class="card-header">Delete Forum</h1>
+<div class="card">
+    <form method="POST" class="form__group" action="{% url 'delete-forum' forum.pk %}">
+        {% csrf_token %}
+         <p>Are you sure you want to delete {{forum}} </p>
+         <a href="{% url 'forum' %}"><button type="button" class="btn btn-primary">Cancel</button></a>
+         <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% load crispy_forms_tags %}
+{% if user.id == event.manager.id%}
+<div class="dropdown float-right mr-4">
+  <a class="text-dark" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-ellipsis-v"></span> </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item edit_job" href="{% url 'edit-event' event.id %}" >Edit</a>
+    <a class="dropdown-item delete_job" href="{% url 'delete-event' event.pk %}" >Delete</a>
+  </div>
+</div>
+{% endif %}

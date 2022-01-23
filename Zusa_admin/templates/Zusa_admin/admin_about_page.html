@@ -1,0 +1,43 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{%load static%}
+{% block title %}About_Page{% endblock%}
+{% block content %}
+
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<link href="{% static 'main/css/club.css' %}" rel="stylesheet">
+<div class="row col-md-12 mb-2 justify-content-center">
+  <a href="{% url 'admin_aboutadd_view' %}"class="btn btn-info btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create About Page</a>
+</div> 
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title" style="text-align: center;">About-Page</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {% for abouts in about %}
+      <tr>
+        <td> {{abouts.title }}</td>
+        <td> {{abouts.content|safe|slice:":50"}}</td> 
+        <td><a class="btn btn-primary btn-xs" href="{% url 'aboutpage_edit' abouts.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete_about' abouts.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

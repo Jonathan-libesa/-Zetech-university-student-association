@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% block title%}Edit Club Information{%endblock%}
+{% block content %}
+<style>
+    body{
+        background-color:#add8e64a;
+    }
+    #card{
+        background-color:#ebeff5;
+    }
+</style>
+    <br>
+    <div class="container">
+    <!-- Content here -->
+        <div class="card p-3" id="card">
+            <div class="card-titler">
+                <h3 style="text-align:center;">EDIT CLUB</h3>
+            </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-outline-primary">Update</button>
+                    </div>
+                <form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

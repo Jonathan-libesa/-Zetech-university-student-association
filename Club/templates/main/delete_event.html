@@ -1,0 +1,15 @@
+{% extends 'main\base.html'%}
+{% block title%}{{event.Name}}{% endblock%}
+<br>
+{% block content%}
+<br>
+<h1 >Delete Events</h1>
+<div class="card">
+    <form method="POST" class="form__group" action="{% url 'delete-event' event.pk %}">
+        {% csrf_token %}
+         <p>Are you sure you want to delete {{event}} </p>
+         <a href="{% url 'clubuser' %}"><button type="button" class="btn btn-primary">Cancel</button></a>
+         <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% block title %}Add_Post_Catergory{% endblock%}
+{% block content %}
+<h2 style="text-align:center; color:blue;">ADD/EDIT CATEGORY</h2>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group" >
+      <label for="name">Category Name</label>
+      {{form.title}}
+    </div>   
+<br>
+    <button type="submit" class="btn btn-primary">ADD</button>
+  </form>
+{% endblock content %}

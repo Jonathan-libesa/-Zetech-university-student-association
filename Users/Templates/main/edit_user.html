@@ -1,0 +1,23 @@
+{% load crispy_forms_tags %}
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i>Edit Information
+            </div>
+            <div class="card-body">
+                {% for msg in messages %}
+                 <p class="text-success">{{msg}}</p>
+                {% endfor %}
+             <form method="POST" class="form__group" enctype="multipart/form-data">
+                 {% csrf_token %}
+                <tbody>
+                    <tr>
+                        <td>{{form|crispy}}</td>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </tr>
+                </tbody>
+             </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,34 @@
+{% extends 'main\base.html'%}
+{% load static %}
+<title>{%block title%}Participants{%endblock%}</title>
+{% block content %}
+<br>
+<!-- Main style sheet -->
+  <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+  <!--<link href="{% static 'main/css/stylee.css' %}" rel="stylesheet">--> 
+  <link href="{% static 'main/css/clubs.css' %}" rel="stylesheet"> 
+<div class="container">
+<div class="row" style="justify-content: center;">
+<div class="col-md-9 ">
+<div class="card text-black mb-3">
+  <div class="card-body" >
+    <h5 class="card-title" style="text-align:center;">Participants:{{number_of_participants}}</h5>
+    <hr class="divider"  style="max-width: calc(100%)">
+    {% for participant in participants%}
+       <ol class="list-group list-group-numbered">
+		  <li class="list-group-item d-flex justify-content-between align-items-start">
+		    <div class="ms-2 me-auto">
+		      <div class="fw-bold"><a href="{% url 'user-profile' participant.id %}">{{participant.username}} {{participant.email}}</a></div>
+		    </div>
+		    <br>
+		    <i class="fas fa-comment-dots"></i>
+		  </li>
+       </ol>
+     {% endfor %}
+    
+  </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

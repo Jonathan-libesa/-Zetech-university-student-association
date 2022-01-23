@@ -1,0 +1,150 @@
+{%extends 'main/base.html'%}
+{% load static %}
+<title>{%block title%}Dashboard{%endblock%}</title>
+{%block content%}
+<style>
+	body{
+		background-color: #ebeff5;;
+	}
+</style> 
+ <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
+	<!--
+      CSS
+      =============================================
+    -->
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}" />
+
+  <!-- ================ conteny area ================= -->
+  {% include 'main/messages.html'%}
+  <section class="top-category-widget-area pt-50 pb-40"style="background-color:#ebeff5;">
+		<div class="container">
+			<!-- START OF CLUB SECTION-->
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" style="height: 200px;width: 300px" src="{% static 'main/imgs/clubs.png' %}" >
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase"><a class ="btn btn-primary btn-sm"href="{% url 'clubuser' %}">clubs</a></h4>
+										
+									<span></span>
+									<p>Enjoy and Jion your preferred club</p>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- END OF CLUB-->
+
+			  <!-- START OF NEWS-->
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" style="height: 200px;width: 300px" src="{% static 'main/imgs/news.jpg' %}" >
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase"><a class ="btn btn-primary btn-sm"href="{% url 'news_user' %}">News and announcement</a></h4>
+									<span></span>
+									<p>Recieve news from your student leader</p>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- END OF NEWS-->
+
+
+				<!-- START OF POST-->
+
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="#" target="_blank">
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" style="height: 200px;width: 300px" src="{% static 'main/imgs/newpost.jpg' %}">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase"><a class ="btn btn-primary btn-sm"href="{% url 'blog-home'%}">posts</a></h4>
+									<span></span>
+									<p>Post your information here and also post</p>
+								</div>
+							</a>	  
+						</div>
+					</div>
+				</div>
+			 <!-- END OF  POST -->
+			</div>
+		</div>
+	</section>
+
+		
+     <!-- SECTION 2-->
+
+	<section class="top-category-widget-area " style="background-color:#ebeff5;">
+		<div class="container">
+			<div class="row">
+				<!-- START OF  Alumni -->
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" style="height: 200px;width: 300px" src="{% static 'main/imgs/bg5.jpg'%}" >
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase"><a class ="btn btn-primary btn-sm"href="{% url 'alumni' %}">alumni</a></h4>
+									<span></span>
+									<p>interact with student who were in Zetech</p>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- END OF Alumni -->
+
+				<!-- START OF ABOUT ZUSA -->
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="">
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" style="height: 200px;width: 300px" src="{% static 'main/imgs/logo.jpg'%}" >
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase"><a class ="btn btn-primary btn-sm"href="{% url 'about' %}">Zetech university student association</a></h4>
+									<span></span>
+									<p>About Zusa</p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- END OF ZUSA ABOUT -->
+
+
+                <!-- START OF STUDENT LEADERS -->
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" style="height: 200px;width: 300px" src="{% static 'main/imgs/leader.jpg' %}">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase"><a class ="btn btn-primary btn-sm"href="{% url 'leader-view' %}">Student Leaders</a></h4>
+									<span></span>
+									<p>See Your Student Leaders</p>
+								</div>	  
+						</div>
+					</div>
+				</div>
+			 <!-- END OF STUDENT LEADERS -->
+			</div>
+		</div>
+	</section>
+	
+{%endblock%}

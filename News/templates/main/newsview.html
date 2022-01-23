@@ -1,0 +1,63 @@
+{% extends 'main/base.html'%}
+{% load static %}
+<title>{% block title %}News{% endblock%}</title>
+{% block content %}
+
+	<style>
+		.profile-pic{
+		  max-width: 45px;
+	      max-height: 45px;
+	      margin: 0 auto;
+	      border-radius: 50%;
+      }
+      .img{
+	      margin-left: 20%;
+	      width: 45%;
+	      height: 45%;
+      }
+      body{
+      	background-color:#ebeff5;
+      }
+	</style>
+			  
+	<br>
+<div class="container">
+	{% for x in new %}	
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-header"style="text-align: center">{{x.Subject}}</h3>
+				<div>
+				 <img class="profile-pic" src= "{{ x.Author.profile_pic.url}}">
+				</div>
+				<div>
+				 <p><strong>Posted by:</strong><a href="{% url 'user-profile' x.Author.id %}"> {{x.Author}}{{x.Author.Last_name}}</a></p> 
+				</div>
+				<div>
+				 <p>{{x.created_on}}</p>
+				</div>
+				{% if x.image %}
+					<div><img  class ="img" src= "{{ x.image.url }}"></div>
+				{% endif %}
+			   <div><p class="card-text">{{x.body|safe}}</p></div>
+			   {% if x.files %}
+			    <h3><a class ="btn btn-primary btn-sm" href="{{x.files.url}}"download="{{x.files.url}}">Download File</a></h3>
+			   {% endif %}
+		   </div>
+		</div>
+	   <br>
+	{% empty %}
+		<div class="card">
+			<div class="card-body">
+			   <p class="card-text" style="text-align:center;">No News Available</p>
+		   </div>
+		</div>
+	{% endfor %}
+	   <ul class="pagination justify-content-center">
+		 	{% for i in paginator.page_range %}
+			 	<li class="page-item {% if i == page_number%} active{% endif %}">
+			 		<a  class="page-link"href="?page={{i}}">{{i}}</a>
+			 	</li>
+		 	{% endfor %}
+	    </ul>
+</div>	  
+{% endblock %}

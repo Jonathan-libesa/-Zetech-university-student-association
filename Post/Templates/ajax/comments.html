@@ -1,0 +1,14 @@
+{% for comment in post_comments %}
+	<div class="single-comment justify-content-between d-flex product-box">
+		<div class="user justify-content-between d-flex">
+			<div class="thumb">
+			 <img class="profile-pic"src="{{ comment.user.profile_pic.url}}">
+			</div>
+			<div class="desc">
+			 <h5><a href="{%  url 'user-profile' comment.user.id %}">{{comment.user}}{{comment.user.first_name}} {{comment.user.Last_name}}</a></h5>
+			 <p class="date">{{comment.created_on|timesince}} ago</p>
+			 <p class="comment">{{comment.content}}</p>
+			</div>
+		</div>
+	</div>
+{% endfor %}

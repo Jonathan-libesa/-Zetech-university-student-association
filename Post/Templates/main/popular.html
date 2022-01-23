@@ -1,0 +1,29 @@
+{% for pop in popular_posts%}
+	<div class="popular-post-list">
+		<div class="single-post-list d-flex flex-row align-items-center">
+			{% if pop.Photo_Video_type_html == "video" %}
+			    <video  controls="controls"  class="vid">
+					<source src="{{pop.Photo_Video.url}}" type="video/mp4">
+				</video>
+			{% elif pop.Photo_Video_type_html == "image" %}
+				<div>
+					<img class="img-fluid" src="{{pop.Photo_Video.url}}">
+				</div>
+			{% endif %}
+				<div class="details">
+					<a href="{% url 'post-details' pop.pk %}">
+					 <h6>{{pop.Title}}</h6>
+					</a>
+					 <p><small><i>{{pop.created_on|timesince}} ago</i></small></p>
+				</div>
+		</div>
+	</div>
+{% empty %}
+	<div class="popular-post-list">
+	    <div class="single-post-list d-flex flex-row align-items-center">
+			<div class="details">
+			 <p>No Popular Post available</p>
+			</div>
+		</div>
+	</div>
+{% endfor %}

@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+{%load static%}
+<title>{%block title%}Club-List{%endblock%}</title>
+{%block content%}
+{% include 'main/messages.html'%}
+<style>
+  body{
+    background-color:#ebeff5 ;
+  }
+</style>
+<!-- Main style sheet -->
+    <link href="{% static 'main/css/club.css' %}" rel="stylesheet">
+<br>
+<br>
+{% include 'main/search.html' %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <h5 class="card-header"style="text-align: center;">CLUBS</h5>
+    </div>
+    <div class="card card-body">
+      <table class="table table-sm" >
+        <tr>  
+          <th>Logo</th>
+          <th>Club Name</th> 
+          <th>Chairperson</th>
+          <th>Created on</th>
+          <th>View</th>
+        </tr>
+          {% for club in clubs %}
+            <tr class="product-box">
+            {% if club.profile_pic %}
+            <td><img class="profile-pic" src="{{club.profile_pic.url}}"></td>
+            {% endif %}
+             <td style="text-transform: lowercase;">{{club.Name}}</td>
+             {% if club.Chairperson %}
+             <td><a href="{% url 'user-profile' club.Chairperson.pk %}"><small>{{club.Chairperson}}</small></a></td>
+             {% elif club.Parton%}
+             <td><a href="{% url 'user-profile' club.Parton.pk %}"><small>{{club.Chairperson}}</small></a></td>
+             {% endif %}
+             <td><small><i>{{club.date_created}}</i></small></td>
+             <td><a class="btn btn-success btn-sm" href="{% url 'details' club.pk %}">View</a></td>
+            </tr>
+          {% empty %}
+            <tr>
+             <td colspan="8" class="text-center bg-warning">No Clubs</td>
+            </tr>
+          {%endfor%}
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+{% include 'main/pagination.html' %}
+{%endblock%}

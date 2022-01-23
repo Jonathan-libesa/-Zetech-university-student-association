@@ -1,0 +1,69 @@
+{%extends 'main/base.html'%}
+{% load static %}
+<title>{% block title%}Catergory-view{%endblock%}</title>
+{% block content %}
+<style>
+	body{
+		background-color:#ebeff5 ;
+	}
+</style>
+	<!--
+      CSS
+      =============================================
+    -->
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'main/css/Homepage.css' %}" />
+	<br>
+	<!-- Start post-content Area -->
+	<section class="post-content-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+				   {% for posts in Category %}
+						<div class="single-post row">
+							<div class="col-lg-3  col-md-3 meta-details">
+								<ul class="tags">
+								 <li>{{posts.categories}}</li>
+								</ul>
+								<div class="user-details row">
+									<p class="user-name col-lg-12 col-md-12 col-6"><a href="{%  url 'user-profile' posts.author.id %}">{{posts.author}} {{posts.author.first_name}} {{posts.author.Last_name}} </a> <span class="bi bi-person"></span></p>
+									<p class="date col-lg-12 col-md-12 col-6">{{posts.created_on|timesince}} ago<span class="bi bi-calendar-check"></span></p>
+								</div>
+							</div>
+							<div class="col-lg-9 col-md-9 ">
+								{% if posts.Photo_Video_type_html == "video" %}
+								 <video  controls="controls" width="70%" class="card-vd">
+									<source src="{{posts.Photo_Video.url}}" type="video/mp4">
+								 </video>
+								{% elif posts.Photo_Video_type_html == "image" %}
+									<div class="feature-img">
+										<img class="img-fluid-top" src="{{posts.Photo_Video.url}}">
+									</div>
+								{% endif %}
+								<h3>{{posts.Title}}</h3>
+								<p class="excert">{{posts.content|safe|slice:":200"}}</p>
+								<a href="{% url 'post-details' posts.pk %}" class="view-more-btn">View More</a>
+							</div>
+						</div>
+					{% empty %}	 
+						<p style="text-align:center"><large>NO POSTS TO DISPLAY</large></p>
+				    {% endfor %}
+				   <!-- pagination-->
+					{%include 'main/pagination.html'%}
+					<!--end of pagination-->
+				</div>
+				<div class="col-lg-4 sidebar-widgets">
+					<div class="widget-wrap">
+						<div class="single-sidebar-widget popular-post-widget">
+						 <h4 class="popular-title">Popular Posts</h4>
+						 {% include 'main/popular.html' %}
+						</div>
+						 
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+	<!-- End post-content Area -->
+
+{% endblock %}

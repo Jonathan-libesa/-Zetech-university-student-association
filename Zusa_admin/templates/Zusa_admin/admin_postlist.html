@@ -1,0 +1,45 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<link href="{% static 'main/css/club.css' %}" rel="stylesheet">
+<div class="row col-md-12 mb-2 justify-content-center">
+  <a href="{% url 'add_Post_admin' %}"class="btn btn-info btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create New Post</a>
+</div> 
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Post-List</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Slug</th>
+          <th>created_on</th>
+          <th>Author</th>
+          <th>Details</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {% for post in posts %}
+      <tr>
+        <td> {{post.Title }}</td>
+        <td> {{post.slug}}</td>
+        <td> {{post.created_on}}</td>
+        <td> {{post.author}}</td> 
+        <td><a class="btn btn-primary btn-xs" href="{% url 'Edit_admin_post' post.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete_view_post' post.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

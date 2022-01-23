@@ -1,0 +1,29 @@
+{% extends 'main\base.html'%}
+{% load static %}
+{% block title%}{{forum.title}}{% endblock %}
+{% block content %}
+<!-- Main style sheet -->
+    <link href="{% static 'main/css/alumni.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+<header class="masthead">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end mb-4 page-title">
+                <a href="{% url 'forum' %}"><h3 class="text-white">Forum List</h3></a>
+                <h3 class="text-white">{{forum.title}}</h3>
+                <hr/>
+            <div class="row col-md-12 mb-2 justify-content-center">
+                <span>
+                     <a href="#" class="badge badge-info px-3 pt-1 pb-1" ><b><l>Topic Created by: </l>{{forum.author}}</b></a>
+                 </span>
+                 <br>
+            </div>   
+            </div>
+            
+        </div>
+    </div>
+</head>
+
+{% endblock %}
+
+

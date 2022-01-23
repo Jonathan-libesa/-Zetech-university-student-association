@@ -1,0 +1,97 @@
+{% extends 'main\base.html'%}
+{% load static %}
+{% block title%}Job view {% endblock %}
+{% block content %}
+<!-- Main style sheet -->
+    <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+<style>
+    body{
+    background: #7abecc !important;
+}
+</style>
+<header class="masthead">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end mb-4 page-title">
+                <h3 class="text-white">Job List</h3>
+            <div class="row col-md-12 mb-2 justify-content-center">
+                {% if user.is_alumni %}
+                 <!-- Button trigger modal -->
+                <button class="btn btn-primary btn-block col-sm-4" data-toggle="modal"data-target="#Addjob"><i class="fa fa-plus"></i> Post a Job Opportunity</button>
+                <!-- Modal -->
+                <div class="modal fade" id="Addjob" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Create Job</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <!-- Create job Template-->
+                      {%include 'main/post_job.html'%}
+                      <!-- end -->
+                {% endif %}
+            </div>   
+            </div>
+            
+        </div>
+    </div>
+</header>
+<div class="container mt-3 pt-2">
+ <form>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder=" search with job_title" name="query"
+                      aria-label="Filter" aria-describedby="filter-field">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block btn-sm" >Search</button>
+                </div>
+            </div> 
+            <br>
+             <a id="new_career" href="{%url 'alumni' %}"class="btn btn-outline-secondary btn-block col-sm-2">Back to Alumni</a> 
+        </div>
+    </div>
+  </form>
+   
+   {% for job in career %}
+        <div class="card job-list" data-id="">
+            <div class="card-body">
+                <div class="row  align-items-center justify-content-center text-center h-100">
+                    <div>
+                        <h3><b class="filter-txt">{{job.job_title}}</b></h3>
+                        <div>
+                        <span class="filter-txt"><small><b><i class="fa fa-time">Posted :</i>{{job.date_created|timesince}} ago</b></small></span>
+                        <span class="filter-txt"><small><b><i class="fa fa-building"></i>{{job.company}}</b></small></span>
+                        <span class="filter-txt"><small><b><i class="fa fa-map-marker"></i>{{job.location}}</b></small></span>
+                        </div>
+                        <hr>
+                        <larger class="truncate filter-txt">{{job.Description|safe|slice:":200"}}</larger>
+                        <br>
+                        <hr class="divider"  style="max-width: calc(1000%)">
+                        <span>
+                         <a href="#" class="badge badge-info float-left px-3 pt-1 pb-1" ><b><l>Posted by:{{job.author}}</l></b></a>
+                        </span>
+                         <span class="filter-txt"><small><b><i class="fa fa-time">Updated:</i>{{job.updated|timesince}} ago,</b></small></span>
+                        <a id="new_career" href="{% url 'job_view' job.pk %}"class="btn btn-primary float-right view_topic" >Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    {% empty %}
+     <p style="text-align: center;">No Job to display</p>
+   {% endfor %}
+    <!-- pagination-->
+     
+    <!--end of pagination-->    
+</div>   
+{% endblock %}

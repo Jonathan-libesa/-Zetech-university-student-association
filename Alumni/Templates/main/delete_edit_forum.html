@@ -1,0 +1,24 @@
+{% load crispy_forms_tags %}
+{% if user.id == forum.author.id%}
+<!-- UPDATE/EDIT Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update/Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {%include 'main/update forum.html'%}
+    </div>
+  </div>
+</div>
+<div class="dropdown float-right mr-4">
+  <a class="text-dark" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-ellipsis-v"></span> </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item edit_job" data-toggle="modal" data-target="#updateModal" >Edit</a>
+    <a class="dropdown-item delete_job" href="{% url 'delete-forum' forum.id %}">Delete</a>
+  </div>
+</div>
+{% endif %}
