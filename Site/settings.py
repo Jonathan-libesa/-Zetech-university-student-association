@@ -62,13 +62,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Site.urls'
@@ -139,10 +139,10 @@ USE_TZ = True
 #https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
-#STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 #STATIC_URL = '/MEDIA/'
 STATIC_URL = '/static/'
-#MEDIA_URL='/Main/'
+MEDIA_URL='/Main/'
 STATICFILES_DIRS =[
   os.path.join(BASE_DIR,'static')
 ]
@@ -175,9 +175,13 @@ AWS_STORAGE_BUCKET_NAME = 'zusa'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_REGION_NAME = "us-east-2" # your region
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 
 
 django_heroku.settings(locals())
+
+import dj_database_url
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
