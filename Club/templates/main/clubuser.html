@@ -25,7 +25,6 @@
           <th>Logo</th>
           <th>Club Name</th> 
           <th>Chairperson</th>
-          <th>Created on</th>
           <th>View</th>
         </tr>
           {% for club in clubs %}
@@ -39,7 +38,6 @@
              {% elif club.Parton%}
              <td><a href="{% url 'user-profile' club.Parton.pk %}"><small>{{club.Chairperson}}</small></a></td>
              {% endif %}
-             <td><small><i>{{club.date_created}}</i></small></td>
              <td><a class="btn btn-success btn-sm" href="{% url 'details' club.pk %}">View</a></td>
             </tr>
           {% empty %}

@@ -34,11 +34,12 @@
                {% include 'main/jionclub.html'%}
 
               {% if request.user == career.Chairperson %}
-                <a href="{% url 'editclub' career.id %}" class="btn btn-primary"> Edit Club Profile</a>
+                <a href="{% url 'editclub' career.id %}" class="btn btn-primary"> Edit Club Profile</a><br><br>
                 <a href="{% url 'Add-event' career.id %}" class="btn btn-primary"> Add Events to Club</a>
               {% endif %}
               {% if request.user == career.Parton %}
                <a href="{% url 'editclub' career.id %}" class="btn btn-primary"> Edit Club Profile</a>
+               <br><br>
                <a href="{% url 'Add-event' career.id %}" class="btn btn-primary"> Add Events to Club</a>
               {% endif %}
 
