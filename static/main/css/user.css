@@ -12,12 +12,10 @@
 			background-color:#5D6D7E ;
 			width:350px;
 			height:450px;
-			margin-bottom: 25px;
-			margin-top: 40px;
+			margin-bottom: auto;
+			margin-top: auto;
 			position: relative;
-			display: flex;
 			justify-content: center;
-			flex-direction: column;
 			padding: 10px;
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -78,7 +76,7 @@
 ====================*/
 		.user_card01{
 			width: 350px;
-			height: 490px;
+			height: 500px;
 			margin-top: auto;
 			margin-bottom: auto;
 			background: #5D6D7E;
