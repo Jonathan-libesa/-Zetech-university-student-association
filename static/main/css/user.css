@@ -12,8 +12,8 @@
 			background-color:#5D6D7E ;
 			width:350px;
 			height:450px;
-			margin-top:auto;
-			margin-bottom: auto;
+			margin-bottom: 25px;
+			margin-top: 40px;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -77,10 +77,10 @@
  End of Register css
 ====================*/
 		.user_card01{
-			width: 400px;
-			height: 500px;
-			margin-top: auto;
-			margin-bottom: auto;
+			width: 350px;
+			height: 490px;
+			margin-top: 45px;
+			margin-bottom: 15px;
 			background: #5D6D7E;
 			position: relative;
 			display: flex;
