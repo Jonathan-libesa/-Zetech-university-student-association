@@ -137,8 +137,8 @@ def EditEvent(request,pk):
 @login_required(login_url='login')
 def DeleteEvent(request,pk):
 	event=get_object_or_404( Event,id=pk)
-	if event.Photo_Video:
-		event.Photo_Video.delete()
+	if event.Photo:
+		event.Photo.delete()
 	event.delete()
 	messages.warning(request,'CLUB EVENT WAS DELETED SUCESSFULLY')	
 	return redirect('clubuser')

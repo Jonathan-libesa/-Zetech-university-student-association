@@ -37,13 +37,9 @@
 								</div>
 							</div>
 							<div class="col-lg-9 col-md-9 ">
-							   {% if post.Photo_Video == "video" %}
-									<video  controls="controls" class="card-vd">
-										<source src="{{post.Photo_Video.url}}" type="video/mp4">
-									</video>
-							   {% elif Photo_Video_type_html == "image" %}
+							   {% if post.Photo %}
 									<div class="feature-img">
-	    								<img  class="card-img-top" src="{{post.Photo_Video.url}}">
+	    								<img  class="card-img-top" src="{{post.Photo.url}}">
 									</div> 	
 							    {% endif %}							
 								<h3>{{post.Title}}</h3>

@@ -28,8 +28,7 @@ class Post(models.Model):
 	updated=models.DateTimeField(auto_now_add=True)
 	content=models.TextField(blank=True,null=True)
 	created_on=models.DateTimeField(auto_now_add=True)
-	Photo_Video=models.FileField(null=True,blank=True,upload_to='Post_Video/')
-	image_url=models.CharField(max_length=500,default=None,null=True,blank=True)
+	Photo=models.ImageField(null=True,blank=True,upload_to='Post_Video/')
 	categories=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True)
 	hit_count_generic = GenericRelation(HitCount,object_id_field='object_pk',related_query_name='hit_count_generic_relation')
 	
@@ -40,12 +39,12 @@ class Post(models.Model):
 		return self.Title
 
 
-	def Photo_Video_type_html(self):
-		type_tuple=guess_type(self.Photo_Video.url,strict=True)
-		if(type_tuple[1]).__contains__("image"):
-			return "image"
-		elif (type_tuple[0]).__contains__("video"):
-			return "video"
+	#def Photo_Video_type_html(self):
+		#type_tuple=guess_type(self.Photo_Video.url,strict=True)
+		#if(type_tuple[1]).__contains__("image"):
+			#return "image"
+		#elif (type_tuple[0]).__contains__("video"):
+			#return "video"
 
 
 class Comment(models.Model):

@@ -25,12 +25,8 @@ Club-Events
       {% for event in events%}
         <div class="col-md-6">
            <div class="card">
-             {% if event.Photo_Video_type_html == "image" %}
-                <img src="{{event.Photo_Video.url}}" class="card-img-top">
-             {% elif event.Photo_Video_type_html == "video" %}
-                <video  controls="controls" class="card-vd">
-                  <source src="{{event.Photo_Video.url}}" type="video/mp4">
-                </video>
+             {% if event.Photo %}
+                <img src="{{event.Photo.url}}" class="card-img-top">
              {% endif %}
                 <div class="card-body">
                     {% include 'main/delete_edit_event.html'%}

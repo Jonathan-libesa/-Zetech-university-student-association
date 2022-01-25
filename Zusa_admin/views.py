@@ -551,13 +551,15 @@ def admin_edit_Zetech_team(request,pk):
 	return render(request,'Zusa_admin/admin_add_page.html',context)	
 
 
-#TO DELETE STUDENT ABOUT-PAGE
+#TO DELETE ZETECH TEAM 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Admin'])
 def view_delete_zetechteam(request,pk):
     team=get_object_or_404(Zetechteam,id=pk)
-    if team.Photo_Video:
-    	team.Photo_Video.delete()
+    if team.Photo:
+    	team.Photo.delete()
+    elif team.Video:
+    	team.Video.delete()
     team.delete()
     return HttpResponseRedirect('/Zetechteam')
 

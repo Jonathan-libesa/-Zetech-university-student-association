@@ -1,7 +1,8 @@
 <h4>Leave a Comment</h4>
-<form action="." method="POST" class="CommentForm">
+<form action="{% url 'post-details' post.id  %}" method="POST">
+	{% csrf_token %}
 	<div class="form-group">
-    <textarea class="form-control mb-10 " rows="5" placeholder = 'Say something...'></textarea>
+		{{form}}
 	</div>
-	<button type="button" class="btn save-comment" >Post Comment</button> 
+	<button class="btn" >Post Comment</button> 
 </form>

@@ -54,7 +54,7 @@ class PostDetail(HitCountDetailView):
 			form.instance.user = request.user
 			form.instance.post=post
 			form.save()
-		return redirect(reverse("post-details",kwargs={'slug':post.slug}))
+		return redirect(reverse("post-details",kwargs={'pk':post.pk}))
 	
 	def get_context_data(self,**kwargs):
 		post_comments_count=Comment.objects.all().filter(post=self.object.id).count()

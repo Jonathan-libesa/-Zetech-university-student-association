@@ -12,7 +12,7 @@ class ClubForm(ModelForm):
 
 
 class EventForm(ModelForm):
-	Photo_Video= forms.FileField(required=False, validators=[ validate_file_size])
+	Photo= forms.FileField(required=False, validators=[ validate_file_size])
 	class Meta:
 		model=Event
 		Fields='__all__'

@@ -28,7 +28,7 @@ class Event(models.Model):
 	updated=models.DateTimeField(auto_now=True)
 	Venue=models.CharField(max_length=250,blank=False,null=False)
 	Club_Name=models.ForeignKey( Club ,on_delete= models.SET_NULL,blank=False,null=True)
-	Photo_Video =models.FileField( upload_to='Club_event_file/',null=True,blank=True)
+	Photo =models.ImageField( upload_to='Club_event_file/',null=True,blank=True)
 	Description=models.TextField(blank=False)
 	
 
@@ -38,12 +38,12 @@ class Event(models.Model):
 	def __str__(self):
 		return self.Name
 
-	def Photo_Video_type_html(self):
-		type_tuple=guess_type(self.Photo_Video.url,strict=True)
-		if(type_tuple[0]).__contains__("image"):
-			return "image"
-		elif (type_tuple[0]).__contains__("video"):
-			return "video"
+	#def Photo_Video_type_html(self):
+		#type_tuple=guess_type(self.Photo_Video.url,strict=True)
+		#if(type_tuple[0]).__contains__("image"):
+			#return "image"
+		#elif (type_tuple[0]).__contains__("video"):
+			#return "video"
 			
 
  

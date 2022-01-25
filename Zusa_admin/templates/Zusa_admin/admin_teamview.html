@@ -30,10 +30,11 @@
       {% for teams in team %}
       <tr>
         <td> {{ teams.Name}}</td>
-        {% if teams.Photo_Video_type_html == "video" %}
-        <td><video  src="{{teams.Photo_Video.url}}" class="img"></video></td>
-        {% elif teams.Photo_Video_type_html == "image" %}
-        <td><img src="{{teams.Photo_Video.url}}" alt="Profile Pic" class="img" /></td>
+        {% if teams.Video %}
+        <td><video  src="{{teams.Video.url}}" class="img"></video></td>
+        {% endif %}
+        {% if teams.Photo %}
+        <td><img src="{{teams.Photo.url}}" alt="Profile Pic" class="img" /></td>
         {% endif %}
         <td>{{teams.Bio|safe|slice:":50"}}</td>
         <td><a class="btn btn-info btn-xs" href="{% url 'edit_Zetechteam' teams.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>

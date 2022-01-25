@@ -1,13 +1,9 @@
 {% for pop in popular_posts%}
 	<div class="popular-post-list">
 		<div class="single-post-list d-flex flex-row align-items-center">
-			{% if pop.Photo_Video_type_html == "video" %}
-			    <video  controls="controls"  class="vid">
-					<source src="{{pop.Photo_Video.url}}" type="video/mp4">
-				</video>
-			{% elif pop.Photo_Video_type_html == "image" %}
+			{% if pop.Photo %}
 				<div>
-					<img class="img-fluid" src="{{pop.Photo_Video.url}}">
+					<img class="img-fluid" src="{{pop.Photo.url}}">
 				</div>
 			{% endif %}
 				<div class="details">

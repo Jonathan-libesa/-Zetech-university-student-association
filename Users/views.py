@@ -187,8 +187,8 @@ def accountSettings(request):
 @login_required(login_url='login')
 def delete_post_user(request,pk):
     post=get_object_or_404(Post,id=pk)
-    if post.Photo_Video:
-        post.Photo_Video.delete()
+    if post.Photo:
+        post.Photo.delete()
     post.delete()
     return HttpResponseRedirect('/myaccount')
 

@@ -52,7 +52,7 @@ class UserForm(ModelForm):
 
 
 class postForm(forms.ModelForm):
-    Photo_Video= forms.FileField(required=False, validators=[validate_file_size])
+    Photo= forms.FileField(required=False, validators=[validate_file_size])
     class Meta:
         model = Post
         fields ='__all__'

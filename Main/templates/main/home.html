@@ -74,12 +74,13 @@
         {% for teams in team %}
         <div class="col-md-4">
           <div class="card">
-            {% if teams.Photo_Video_type_html == "video" %}
+            {% if teams.Video %}
             <video  controls="controls" class="card-vd">
-               <source src="{{teams.Photo_Video.url}}" type="video/mp4">
+               <source src="{{teams.Video.url}}" type="video/mp4">
             </video>
-            {% elif teams.Photo_Video_type_html == "image" %}
-            <img src="{{teams.Photo_Video.url}}" alt="{{teams.Name}}" class="card-img-top" /></td>
+            {% endif %}
+            {% if teams.Photo %}
+            <img src="{{teams.Photo.url}}" alt="{{teams.Name}}" class="card-img-top" /></td>
             {% endif %}
             <div class="card-body">
               <h3 class="card-title">{{teams.Name}}</h3>
@@ -90,7 +91,7 @@
        {% endfor %}
       </div>
     </div>
-    
+    <hr>
    
    <!--Two column section ZUSA RULES AND ORDERS-->
     <div class="container-fluid padding">
