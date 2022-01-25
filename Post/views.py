@@ -28,7 +28,7 @@ def Blog(request):
 				Q(content__icontains=query)
 			)
 		else:
-			posts=Post.objects.all().order_by('-create_on')
+			posts=Post.objects.all().order_by('-created_on')
 			
 	
 	cat_menu=Category.objects.all()
