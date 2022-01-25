@@ -8,6 +8,7 @@ from hitcount.models import HitCount
 from django.contrib.contenttypes.fields import GenericRelation
 from django.shortcuts import render,redirect,reverse
 from mimetypes import guess_type
+
 #from urlparse import urlparse
 # Create your models here.
 

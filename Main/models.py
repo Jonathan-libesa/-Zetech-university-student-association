@@ -1,12 +1,14 @@
+import os 
 from django.db import models
 from mimetypes import guess_type
+from os.path import splitext
 # Create your models here.
 
 class Zetechteam(models.Model):
 	Name =models.CharField(max_length=100)
 	Bio =models.TextField()
+	Video=models.FileField(null=True,blank=True,upload_to='Home_page_Video/')
 	Photo=models.ImageField(null=True,blank=True,upload_to='Home_page_photo/')
-	Video=models.FileField(null=True,blank=True,upload_to='Home_page_photo/')
 	date_created=models.DateTimeField(auto_now_add=True)
 	class Meta:
 		ordering=['-date_created']
