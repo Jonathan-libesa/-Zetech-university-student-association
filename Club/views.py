@@ -34,7 +34,7 @@ def clubs(request):
 
 #TO SHOW DETAILS OF THE CLUB AND PARTICIPANTS
 @login_required(login_url='login')
-def Clubdetails(request,pk):
+def Club_details(request,pk):
 	career=get_object_or_404(Club,id=pk)
 	#career=Club.objects.get(id=pk)
 	participants=career.participants.all()
@@ -55,7 +55,7 @@ def Clubdetails(request,pk):
 
 #TO SHOW EACH CLUB EVENT ON THE CLUB 
 @login_required(login_url='login')	
-def Clubevent(request,club):
+def Club_event(request,club):
 	events=Event.objects.filter(Club_Name=club)
 	paginator=Paginator(events,per_page=2)
 	page_number=request.GET.get('page',1)
