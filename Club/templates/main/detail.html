@@ -1,16 +1,15 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{%block title%}
+{% block title %}
 {{career.Name}}
-{%endblock%}
+{% endblock %}
 {% block content %}
 <!-- Main style sheet -->
-  <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
-  <!--<link href="{% static 'main/css/stylee.css' %}" rel="stylesheet">--> 
+  <!--link href="{% static 'main/css/main.css' %}" rel="stylesheet"-->
   <link href="{% static 'main/css/club.css' %}" rel="stylesheet"> 
 <br>
-{% include 'main/messages.html'%} 
-{% include 'main/event_participant_dashboard.html'%}  
+{% include 'main/messages.html' %} 
+{% include 'main/event_participant_dashboard.html' %}  
 <div class="container">
   <div class="row" id ="row1">
     <div class="card card-body " id="card01" >
@@ -31,7 +30,7 @@
               <p>Patron:<a href="{% url 'user-profile' career.Parton.pk %}">{{career.Parton}}</a></p>
               {% endif %}
               <p>Contact:{{career.Contact}}</p>
-               {% include 'main/jionclub.html'%}
+               {% include 'main/jionclub.html' %}
 
               {% if request.user == career.Chairperson %}
                 <a href="{% url 'editclub' career.id %}" class="btn btn-primary"> Edit Club Profile</a><br><br>

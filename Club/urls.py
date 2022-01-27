@@ -7,7 +7,7 @@ urlpatterns = [
     path('club/<str:pk>/participants/remove',views.removeparticipants,name="remove_follower"),
     path('club/<str:pk>/participants/add',views.addparticipants,name="add_followers"),
     path('<str:pk>/',views.Club_details,name="details"),
-    path('<str:club>/',views.Club_event,name="Clubevent"),
+    path('Club_event/<str:club>',views.Club_event,name="Clubevent"),
     path('updateclub/<str:pk>',views. Editclub,name="editclub"),
     path('createEvent/<str:pk>',views.createEvent,name="Add-event"),
     path('updateevent/<str:pk>',views.EditEvent,name="edit-event"),
@@ -15,6 +15,4 @@ urlpatterns = [
     path('Delete-Event/<str:pk>',views.DeleteEvent,name="delete-event"),
     #path('load-more-data',views.load_more_data,name='load_more_data'),
     #path('load-more',views.load_more,name='load-more'),
-     
-
     ]
