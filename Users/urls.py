@@ -8,8 +8,9 @@ urlpatterns = [
    path('activate-user/<uidb64>/<token>',views.activate_user, name='activate'),
    path('profile/<str:pk>', views.userProfile, name="user-profile"),
    path('update-user', views.updateUser, name="update-user"),
-   path('account-setting',views.account_Setting,name="account"),
+   path('account_setting_user',views.account_Setting,name="account"),
    path('Add_post',views.ADD_USER_POST,name="add_post"),
    path('Delete_Post/<str:pk>',views.delete_post_user,name="delete_user_post"),
    path('profile_view', views. profile_view_user, name="user_profile"),
+
    ]
