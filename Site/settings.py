@@ -28,7 +28,7 @@ MAX_UPLOAD_SIZE = "10485760"
 SECRET_KEY = "django-insecure-!je7e(18oi18$=d@+kkc!tk#w-!7-j8!4zec$e2q-f3s481(yk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =False 
+DEBUG =False
 
 ALLOWED_HOSTS = ['127.0.0.1','zetechstudentassociation.herokuapp.com']
 

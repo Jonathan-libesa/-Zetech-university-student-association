@@ -169,7 +169,7 @@ def updateUser(request):
 
 #ACCOUNT SETTING
 @login_required(login_url='login')
-def accountSettings(request):
+def account_Setting(request):
     user=request.user
     form=UserForm(instance=request.user)
     if request.method == 'POST':
