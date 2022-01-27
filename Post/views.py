@@ -18,7 +18,7 @@ from django.views import View
 
 #TO SHOW THE BLOGS POST AND SEARCH FOR THE POST
 @login_required(login_url='login')
-def Blog(request):
+def Blog_user(request):
 	#search engine
 	if request.method == 'GET':
 		query = request.GET.get('query')
