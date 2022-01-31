@@ -276,7 +276,7 @@ class CompletePasswordReset(View):
             user = User.objects.get(pk=user_id)
             if not PasswordResetTokenGenerator().check_token(user,token):
                 messages.info(request,'password link is invalid,please request a new one') 
-                return render(request,'main/new-password.html')       
+                return render(request,'main/password_reset.html')       
         except Exception as identifer:
             pass
         return render(request,'main/new-password.html',context)
