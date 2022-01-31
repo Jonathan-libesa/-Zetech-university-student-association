@@ -34,7 +34,7 @@ class EmailThread(threading.Thread):
 
     def run(self):
         self.email.send()
-        self.email.send(fail_silently=False)
+        #self.email.send(fail_silently=False)
 
 #THE EMAIL BODY TO SEND THE ACTIVATION TO LOGIN
 def send_activation_email(user, request):
