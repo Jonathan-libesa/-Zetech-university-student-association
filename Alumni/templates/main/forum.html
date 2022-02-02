@@ -5,6 +5,7 @@
 <!-- Main style sheet -->
  <link href="{% static 'main/css/alumni.css' %}" rel="stylesheet"> 
  <link href="{% static 'main/css/main.css' %}" rel="stylesheet"> 
+ <link rel="stylesheet" href="{% static 'main/css/Homepage.css' %}" />
 <header class="masthead">
     <div class="container-fluid h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
@@ -65,31 +66,27 @@
     
     {% for Forum in forum %}
         <div class="card Forum-list">
-            <div class="card-body">
-                    
-                <div class="row  align-items-center justify-content-center text-center h-100">
-                    <div>
-                        <h3><b class="filter-txt">{{Forum.title}}</b></h3>
+            <div class="card mb-3">
+                {% if Forum.Photo %}
+                  <img src="{{Forum.Photo.url}}" class="card-img-top" alt="">
+                {% endif %}
+                    <div class="card-body">
+                        <h5><b class="filter-txt">{{Forum.title}}</b></h5>
+                        <p class="card-text">{{Forum.description}}</p>
                         <span class="filter-txt"><small><b><i class="fa fa-time">Posted :</i>{{Forum.date_created|timesince}} ago</b></small></span>
-                        <hr>
-                        <larger class="excert">{{Forum.description|urlizetrunc:15|slice:":250"}}</larger>
-                        <br>
-                        <hr class="divider"  style="max-width: calc(80%)">
+                        <hr class="divider"  style="max-width: calc(100%)">
                         <span class="badge badge-info float-left px-3 pt-1 pb-1">
                             <b><i>Topic Created by: <span class="filter-txt">{{Forum.author}}</span></i></b>
                         </span>
-                         <span class="badge badge-secondary float-left px-3 pt-1 pb-1 ml-2">
-                            <a href="{% url 'forum-details' Forum.pk %}"><b><i class="fa fa-comments"></i> <i></i></b></a>
-                        </span>
-                        <a id="new_career" href="{% url 'forum-details' Forum.pk %}"class="btn btn-primary float-right view_topic" >View More</a>
+                        <br>
                     </div>
-                </div>
             </div>
         </div>
         <br>
     {% empty %}
           <p  style="text-align: center;">No Forum to display</p>
-   {% endfor%} 
+    {% endfor%} 
+    {% include 'main/pagination.html' %}
 </div>
 </div>
 {% endblock %}

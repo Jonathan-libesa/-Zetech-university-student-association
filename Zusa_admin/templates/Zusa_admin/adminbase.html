@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>
   {%block title%}
-    Zetech University Student Association
+    Admin-Dashboard
   {%endblock%}
 </title>
    <!-- Bootstrap CSS -->
@@ -46,26 +46,6 @@
     .left_area span {
       color: #19B3D3;
     }
-
-    .logout_btn {
-      padding: 5px;
-      background: #19B3D3;
-      text-decoration: none;
-      float: right;
-      margin-top: -30px;
-      margin-right: 40px;
-      border-radius: 2px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #fff;
-      transition: 0.5s;
-
-    }
-
-    .logout_btn:hover {
-      background: #0B87A6;
-    }
-
     .sidebar {
       background: #2f323a;
       margin-top: 70px;
@@ -179,7 +159,7 @@
   <div class="sidebar" style=" margin-top: 50px;">
     <center>
 
-      <img src="" class="profile_image" alt="">
+      <img src="{{request.user.profile_pic.url}}" class="profile_image" alt="">
       <h4>{{request.user.username}}</h4>
 
     </center>

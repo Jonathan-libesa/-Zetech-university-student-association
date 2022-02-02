@@ -71,9 +71,8 @@ body{
   flex-wrap: wrap;
 }
 #card01{
-  background-color: #CCCCFF;
+  background-color:whitesmoke;
   position: relative;
-  flex: 1;
   margin-left:20px;
 }
 

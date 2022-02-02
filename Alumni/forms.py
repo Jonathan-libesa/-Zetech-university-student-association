@@ -8,10 +8,10 @@ class CareerForm(forms.ModelForm):
 		exclude=['author']
 
 class ForumForm(forms.ModelForm):
-	Photo_Video= forms.FileField(required=False, validators=[validate_file_size])
+	Photo= forms.FileField(required=False, validators=[validate_file_size])
 	class Meta:
 		model=Forum
-		fields=['title','description']
+		fields =['title','description','Photo']
 		exclude=['author']
 class CommentForm(forms.ModelForm):
 	content=forms.CharField(widget=forms.Textarea(attrs={'class':'form-control jqte','cols':"10",'rows':'1','Placeholder':'Say something ..'}))

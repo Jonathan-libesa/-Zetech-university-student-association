@@ -236,8 +236,6 @@ def view_delete_news(request,pk):
 @allowed_users(allowed_roles=['Admin'])
 def view_club_delete(request,pk):
     club=get_object_or_404(Club,id=pk)
-    if club.profile_pic:
-    	club.profile_pic.delete()
     club.delete()
     return HttpResponseRedirect('/admin-view-clubs')
 
@@ -476,7 +474,7 @@ def admin_about_add(request):
 			form.save()
 			return redirect('admin_aboutpage_view')
 	context={'form':form}
-	return render(request,'Zusa_admin/admin_add_page.html',context)	
+	return render(request,'Zusa_admin/admin_add_aboutpage.html',context)	
 
 #TO EDIT ABOUT PAGE FILE OF POST 
 @login_required(login_url='login')
@@ -490,7 +488,7 @@ def admin_about_edit(request,pk):
 			form.save()
 			return redirect('admin_aboutpage_view')
 	context={'form':form}
-	return render(request,'Zusa_admin/admin_add_page.html',context)	
+	return render(request,'Zusa_admin/admin_add_aboutpage.html',context)	
 
 
 #TO DELETE STUDENT ABOUT-PAGE
