@@ -30,9 +30,15 @@ header.masthead,header.masthead:before {
         max-width: calc(50%);
         cursor :pointer;
     }
+    .card-img-top{
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+  }
 /*==================
  end of forum
 ====================*/
+
 
 
 /*==================
