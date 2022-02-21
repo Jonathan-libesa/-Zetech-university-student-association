@@ -28,7 +28,7 @@ MAX_UPLOAD_SIZE = "10485760"
 SECRET_KEY = "django-insecure-!je7e(18oi18$=d@+kkc!tk#w-!7-j8!4zec$e2q-f3s481(yk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG =False
 
 ALLOWED_HOSTS = ['127.0.0.1','zetechstudentassociation.herokuapp.com']
 
@@ -189,7 +189,7 @@ AWS_SECRET_ACCESS_KEY = 'bsNrB3+Ms/uIj9VT3tDXcszHaQFTsx3d7ZSGm221'
 AWS_STORAGE_BUCKET_NAME = 'zusa'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_REGION_NAME = "us-east-2" # your region
 AWS_S3_SIGNATURE_VERSION = "s3v4"
