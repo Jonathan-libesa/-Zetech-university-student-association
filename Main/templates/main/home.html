@@ -1,6 +1,43 @@
 {% extends "main/base.html" %}
 {%load static%}
 {%block content%}
+<style>
+.a{
+    padding: 1.2rem 0;
+  }
+   .btn{
+    padding: 1rem 1.5rem;
+    margin-top: 1px;
+    margin-left:2px ;
+    margin-right: 10px;
+  }
+.items{
+        display: block;
+        width: 100%; 
+        object-fit: cover;
+        object-position: center center;
+        background-repeat: no-repeat;
+        height:500px;
+   }
+  .hero {
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+}
+
+.hero::after {
+    content: "";
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:#6f42c1;
+    z-index: -1;
+}
+</style >
 <link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
  <!--slider image-->
     <div id="slides" class="carousel slide" data-ride="carousel">
@@ -12,8 +49,12 @@
 	    <div class="carousel-inner">
 	    	{% for pages in page %}
 		      <div class="carousel-item{% if forloop.counter0 == 0%} active {% endif %}">
-		        <img class="d-block w-100"src="{{ pages.image.url}}" alt="First slide">
-		          <div class="carousel-caption  d-md-block">
+		        <img class="items" src="{{ pages.image.url}}" alt="First slide">
+		        <div class="carousel-caption  d-md-block">
+                  <div class="col-lg-7 mx-auto text-center">
+                    <a href="{% url 'login'%}" class="btn me-2 btn-primary">LOGIN</a>
+                    <a  data-toggle="modal" data-target="#exampleModal2" class="btn btn-primary">REGISTER</a>
+                  </div>    
 		  		    <h1>{{pages.title}}</h1>
 		  		    <p>{{pages.sub_title}}</p>
 		   	    </div>
@@ -21,20 +62,8 @@
 	      {% endfor %}
 	    </div>
     </div>
-   <!--jumbotron-->
-    <div class="container-fluid padding">
-        <div class="row jumbotron">
-	        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-	          <p class="lead">The Zetech University Student Association Officially Portal to get information from your student leaders and interact with alumnae</p>
-	        </div>
-	        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-              <a href="{% url 'login'%}"><button  type="button" class="btn btn-outline-secondary btn-lg">LOGIN</button></a>
-	        </div>
-        </div>
-    </div>
 
     <div class="container-fluid">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">CREATE ACCOUNT AS:</button>
       <!-- Modal -->
       <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

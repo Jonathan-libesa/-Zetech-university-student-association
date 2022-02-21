@@ -26,9 +26,10 @@ def clubs(request):
 			clubs=Club.objects.all()
 	paginator=Paginator(clubs,per_page=7)
 	page_number=request.GET.get('page',1)
+	cat_menu=Club.objects.all()
 	clubs_obj=paginator.get_page(page_number)
 
-	context={'clubs':clubs_obj,'paginator':paginator,'page_number':int(page_number)}
+	context={'clubs':clubs_obj,'paginator':paginator,'page_number':int(page_number),'cat_menu':cat_menu}
 	return render(request,'main/clubuser.html',context)
 
 
@@ -36,6 +37,7 @@ def clubs(request):
 @login_required(login_url='login')
 def Club_details(request,pk):
 	career=get_object_or_404(Club,id=pk)
+	cat_menu=Club.objects.all()
 	#career=Club.objects.get(id=pk)
 	participants=career.participants.all()
 	number_of_participants=len(participants)
@@ -47,7 +49,7 @@ def Club_details(request,pk):
 			break
 		else:
 			is_following = False
-	context={'career':career,'number_of_participants':number_of_participants,'is_following':is_following,'participants':participants}
+	context={'cat_menu':cat_menu,'career':career,'number_of_participants':number_of_participants,'is_following':is_following,'participants':participants}
 	return render(request,'main/detail.html',context)
 
 
@@ -57,10 +59,11 @@ def Club_details(request,pk):
 @login_required(login_url='login')	
 def Club_event(request,club):
 	events=Event.objects.filter(Club_Name=club)
+	cat_menu=Club.objects.all()
 	paginator=Paginator(events,per_page=2)
 	page_number=request.GET.get('page',1)
 	events_obj=paginator.get_page(page_number)
-	context={'events':events_obj,'paginator':paginator,'page_number':int(page_number)}
+	context={'cat_menu':cat_menu,'events':events_obj,'paginator':paginator,'page_number':int(page_number)}
 	return render(request,'main/club_events.html',context)
 
 
@@ -87,6 +90,7 @@ def removeparticipants(request,pk):
 @login_required(login_url='login')
 def Editclub(request,pk):
 	career=get_object_or_404(Club,id=pk)
+	cat_menu=Club.objects.all()
 	form=ClubForm(instance=career)
 	if request.method == "POST":
 		form=ClubForm(request.POST,request.FILES,instance=career)
@@ -94,7 +98,7 @@ def Editclub(request,pk):
 			form.save()
 		messages.success(request, 'Club updated sucessfully')
 		return redirect('details',pk=career.pk)
-	context = {'form':form}	
+	context = {'form':form,'cat_menu':cat_menu}	
 	return render(request,'main/editclub.html',context)
 
 
@@ -103,6 +107,7 @@ def Editclub(request,pk):
 def createEvent(request,pk):
 	Club_Name=get_object_or_404(Club,id=pk)
 	career=get_object_or_404(Club,id=pk)
+	cat_menu=Club.objects.all()
 	Club_Name=Club_Name
 	form=EventForm(initial={'Club_Name':Club_Name})
 	if request.method == 'POST':
@@ -114,7 +119,7 @@ def createEvent(request,pk):
 			Event.save()
 		#messages.add_message(request,messages.success,'CLUB EVENT ADDED SUCESSFULLY')
 		return redirect('details',pk=career.pk)
-	context={'form':form}
+	context={'form':form,'cat_menu':cat_menu}
 	return render(request, 'main/create event.html',context)
 
 #TO EDIT EVENT OF THE CLUB ADMIN

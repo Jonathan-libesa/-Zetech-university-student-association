@@ -1,0 +1,30 @@
+<style>
+ a{
+ 	text-decoration-color: red;
+ 	text-decoration: none;
+ }
+ #navbar{
+ 	margin-top: 10px;
+    background-color:white;
+
+ }
+
+</style>
+{% if request.user.is_authenticated %}
+<nav class="navbar navbar-light" id="navbar">
+    	<div class="container-fluid">
+	    	<a  class="navbar-brand"href="{% url 'home'%}"></a>
+
+		<div class=" dropdown mr-1">
+         <a href="#" class="nav-link js-scroll-trigger"  id="account_settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>    {{request.user.username}}</a>
+         <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -0.5em;">
+            <a class="dropdown-item"  href="{% url 'User' %}"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i>
+            <a class="dropdown-item" href="{% url 'user_profile' %}" ><i class="fa fa-user-circle-o"></i>      Profile</a>
+            <a class="dropdown-item" href="{% url 'account' %}" ><i class="fa fa-cog"></i>  Account Setting</a>
+            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-power-off"></i>  Logout</a>
+            <i class="fal fa-tachometer-alt-fastest"></i>
+           </div>
+        </div>
+        
+</nav>
+{% endif %}

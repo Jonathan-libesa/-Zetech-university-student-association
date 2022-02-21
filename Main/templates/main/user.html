@@ -2,11 +2,7 @@
 {% load static %}
 <title>{%block title%}Dashboard{%endblock%}</title>
 {%block content%}
-<style>
-	body{
-		background-color: #ebeff5;;
-	}
-</style> 
+ 
  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
 	<!--
       CSS
@@ -15,8 +11,9 @@
 	<link rel="stylesheet" href="{% static 'main/css/style.css' %}" />
 
   <!-- ================ conteny area ================= -->
+  
   {% include 'main/messages.html'%}
-  <section class="top-category-widget-area pt-50 pb-40"style="background-color:#ebeff5;">
+  <section class="top-category-widget-area pt-50 pb-40">
 		<div class="container">
 			<!-- START OF CLUB SECTION-->
 			<div class="row">
@@ -84,7 +81,7 @@
 		
      <!-- SECTION 2-->
 
-	<section class="top-category-widget-area " style="background-color:#ebeff5;">
+	<section class="top-category-widget-area " >
 		<div class="container">
 			<div class="row">
 				<!-- START OF  Alumni -->

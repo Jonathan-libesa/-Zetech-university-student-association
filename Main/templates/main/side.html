@@ -1,10 +1,76 @@
 {%load static %}
+<link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
+<style>
+.a{
+    padding: 1.2rem 0;
+  }
+   .btn{
+    padding: 1rem 1.5rem;
+    margin-top: 1px;
+    margin-left:2px ;
+    margin-right: 10px;
+  }
+  .dropdown-menu {
+  border: 0px;
+  color:#6f42c1 ;
+}
+
+.dropdown:hover>.dropdown-menu {
+  color:#6f42c1 ;
+  display: block;
+}
+</style>
+ <!-- head title -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    	<div class="container-fluid">
-	    	<a  class="navbar-brand"href="{% url 'home'%}"><img src="{% static 'main/imgs/logo.jpg'%}" width="100" height="30"></a>
-			</button>
-        {% if request.user.is_authenticated %}
-				<div class=" dropdown mr-1">
+  <a  class="navbar-brand"href="{% url 'home'%}"><img src="{% static 'main/imgs/logo.jpg'%}" width="100" height="30"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'User' %}">Dashboard <span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+        {%if cat_menu%}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              CLUBS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for item in cat_menu %}
+              <a class="dropdown-item"href="{% url 'details' item.pk|slugify%}">{{item}}</a>
+              {% endfor %}
+            </div>
+        </li>
+        {%endif%}
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'blog-home'%}">POST</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">ABOUT US</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">NEWS</a>
+      </li>  
+    </ul>
+    <ul class="navbar-nav ml-auto ">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'leader-view' %}">CURRENT STUDENT LEADER</a>
+      </li>
+    </ul>
+    <!--ul class="navbar-nav ml-auto ">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item dropdown">
+        <div class=" dropdown mr-1">
          <a href="{% url 'account' %}" class="nav-link js-scroll-trigger"  id="account_settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.username}}  <i class="fa fa-angle-down"></i></a>
           <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -0.5em;">
             <a class="dropdown-item"  href="{% url 'User' %}"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i>
@@ -14,8 +80,14 @@
             <i class="fal fa-tachometer-alt-fastest"></i>
            </div>
         </div>
-        {% endif %}
+      </li>
+     {% endif %}
+    </ul-->
+  </div>
 </nav>
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 <div class="single-sidebar-widget post-category-widget">
  <h4 class="category-title">Post Catgories</h4>
  
-    {% for item in cat_menu %}
+    {% for item in cat_mine %}
 		<ul class="cat-list">
 			<li>
 			   <a href="{% url 'category' item.pk|slugify %}"class="d-flex justify-content-between">
