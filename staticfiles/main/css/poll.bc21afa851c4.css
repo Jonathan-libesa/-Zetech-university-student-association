@@ -1,0 +1,32 @@
+ body{
+    background-color:#ebeff5 ;
+  }
+  #cand th{
+    background-color: #6f42c1;
+    color: white;
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+  }
+  #cand tr,#cand th{
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  #cand ,td ,tr {
+    border: 2px solid purple;
+  }
+  .img {
+    max-width: 100px ;
+    max-height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+   }
+  #title{
+    color: purple;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+  }
