@@ -11,9 +11,11 @@ class Club(models.Model):
 	Parton=models.ForeignKey(User,related_name='Parton',on_delete=models.SET_NULL, null=True,blank=True)
 	Contact=models.CharField(max_length=70,default=None)
 	profile_pic=models.ImageField(default="no_avatar.jpg",null=False,blank=False,upload_to='Club_profile_picture/')
-	participants = models.ManyToManyField(User, related_name='participants', blank=True)
+	participants = models.ManyToManyField(User, related_name='participants', blank=True,default=0, editable=False)
 	Meeting_place=models.TextField(null=True,blank=True)
+	Requirements=models.TextField(null=True,blank=True)
 	date_created=models.DateTimeField(auto_now_add=True)
+
 
 	class Meta:
 		ordering=['-date_created']

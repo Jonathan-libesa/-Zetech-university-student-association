@@ -4,6 +4,7 @@
 {{career.Name}}
 {% endblock %}
 {% block content %}
+
 <!-- Main style sheet -->
   <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
   <link href="{% static 'main/css/clubs.css' %}" rel="stylesheet"> 
@@ -31,7 +32,7 @@
               <p>Patron:<a href="{% url 'user-profile' career.Parton.pk %}">{{career.Parton}}</a></p>
               {% endif %}
               <p>Contact:{{career.Contact}}</p>
-               {% include 'main/jionclub.html' %}
+               {% include 'main/clubrequirement.html' %}
 
               {% if request.user == career.Chairperson %}
                 <a href="{% url 'editclub' career.id %}" class="btn btn-primary"> Edit Club Profile</a><br><br>

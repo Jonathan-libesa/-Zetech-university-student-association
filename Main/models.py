@@ -2,7 +2,15 @@ import os
 from django.db import models
 from mimetypes import guess_type
 from os.path import splitext
+from embed_video.fields import EmbedVideoField
 # Create your models here.
+
+
+class Youtube(models.Model):
+	Name=models.CharField(max_length=250)
+	sub_Title=models.CharField(max_length=250)
+	Video=EmbedVideoField()
+
 
 class Zetechteam(models.Model):
 	Name =models.CharField(max_length=100)
@@ -29,3 +37,6 @@ class Page(models.Model):
 	sub_title=models.CharField(max_length=2000)
 	image=models.ImageField(upload_to='Home_page_photo/',blank=False,null=False) 
 
+ 
+	
+ 

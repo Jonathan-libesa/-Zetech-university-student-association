@@ -1,0 +1,17 @@
+{% if caty_list %}
+    <form action ="{% url 'polls_vote' %}"  method="post">
+    {% for caty in caty_list %}
+        {% csrf_token %}
+        {{ caty }} <br />
+        <fieldset>
+        {% for candidate in caty.candidate_set.all %}
+            <input type="radio" name="{{ caty }}" id="candidate{{ forloop.counter }}" value="{{ candidate.id }}" />
+            <label for="choice{{ forloop.counter }}">{{ candidate }}</label><br />
+        {% endfor %}
+        </fieldset>
+    {% endfor %}
+    <input type="submit" value="Vote" />
+    </form>
+{% else %}
+    <p>No Categories available.</p>
+{% endif %}

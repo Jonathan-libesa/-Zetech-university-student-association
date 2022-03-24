@@ -1,3 +1,9 @@
+<style>
+.button{
+    border-radius: 3px;
+    border: 1px solid rgb(128, 128, 128);
+}
+</style>
 {% if request.user == career.Chairperson %}
 <p><a href="{% url 'followers' career.pk %}">Participants:</a>{{number_of_participants}}</p>
 {% endif %}
@@ -7,11 +13,15 @@
 {% if is_following %}
 <form method="POST" action="{% url 'remove_follower' career.pk %}">
  {% csrf_token %}
- <button class="button">JIONED</button>
+ <div class="row col-md-12 mb-2 justify-content-center">
+    <button class="btn btn-primary btn-block col-sm-4" >JIONED</button>
+ </div>
 </form>
 {% else %}
 <form method="POST" action="{% url 'add_followers' career.pk %}">
  {% csrf_token %}
- <button class="button">JION</button>
+ <div class="row col-md-12 mb-2 justify-content-center">
+    <button class="btn btn-primary btn-block col-sm-4">JION</button>
+ </div>
 </form>
 {% endif %}

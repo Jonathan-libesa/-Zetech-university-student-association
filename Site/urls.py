@@ -14,6 +14,7 @@ urlpatterns = [
     path('',include('Leaders.urls')),
     path('',include('About.urls')),
     path('',include('Zusa_admin.urls')),
+    path('',include('poll.urls')),
     
 ]
 urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

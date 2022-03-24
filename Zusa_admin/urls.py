@@ -51,6 +51,11 @@ urlpatterns = [
     path('admin-carsuoel-delete/<str:pk>', views.admin_carsuoel_delete,name='delete_carsol'),
     path('edit_carsuoel/<str:pk>',views.admin_edit_Carsuoel,name='edit_Carsuoel'),
     path('Edit_post/<str:pk_test>', views.edit_post_admin,name='Edit_admin_post'),
+    path('create_poll_position', views.add_post_position,name='add_postion'),
+    path('postion_view', views.admin_postion,name='postion_view'),
+    path('admin-delete-position/<str:pk>', views.admin_postion_delete,name='delete_position'),
+    path('Edit_position/<str:pk>', views.position_edit,name='edit_position'),
+   
     
 
 

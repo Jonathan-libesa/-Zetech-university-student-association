@@ -5,7 +5,18 @@
     border-top: 4px solid  #6f42c1;
     color: #6f42c1;
 }
-
+.dropdown-menu {
+  border: 0px;
+  color:#6f42c1 ;
+}
+.btn{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.dropdown:hover>.dropdown-menu {
+  color:#6f42c1 ;
+  display: block;
+}
 .items{
   display: block;
   margin: auto;
@@ -15,7 +26,7 @@
   background-repeat: no-repeat;
   height: 450px;
 }
-.card-img-top{
+.card-imgs-top{
     object-fit: cover;
     object-position: center center;
     background-repeat: no-repeat;

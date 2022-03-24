@@ -10,6 +10,7 @@ from Leaders.models import *
 from Post.models import *
 from About.models import *
 from Main.models import *
+from poll.models import*
 
 class userForm(ModelForm):
     class Meta:
@@ -88,4 +89,11 @@ class ZetechForm(forms.ModelForm):
 class pageForm(forms.ModelForm):
     class Meta:
         model=Page
+        fields='__all__'
+
+
+
+class  positionForm(forms.ModelForm):
+    class Meta:
+        model= positions
         fields='__all__'

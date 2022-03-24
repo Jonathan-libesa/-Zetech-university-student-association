@@ -17,6 +17,7 @@ from Student.models import*
 from Main.models import*
 from django.core.paginator import Paginator
 from.forms import*
+from poll .models import *
 from Users.decorators import allowed_users,admin_only
 
 @login_required(login_url='login')
@@ -613,3 +614,49 @@ def admin_edit_Carsuoel(request,pk):
 	return render(request,'Zusa_admin/add_pagecarsuoel.html',context)	
 
 
+#TO ADD CATERGORIES OF POLLS 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def add_post_position(request):
+	form=positionForm()
+	if request.method == 'POST':
+		form=positionForm(request.POST)
+		if form.is_valid:
+			form.save()
+			return redirect('postion_view')
+	context={'form':form}
+	return render(request,'Zusa_admin/add_postion_poll.html',context)
+
+
+
+#TO SHOW THE POSTION CATEGORIES 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def admin_postion(request):
+	cat=positions.objects.all()
+	context={'cat':cat}
+	return render(request,'Zusa_admin/admin_category_postion.html',context)
+
+
+#TO DELETE POSTION POLL
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def admin_postion_delete(request,pk):
+    cat=get_object_or_404(positions,id=pk)
+    cat.delete()
+    return HttpResponseRedirect('/postion_view')
+
+
+#TO EDIT POSITION  POLL
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def position_edit(request,pk):
+	cat=get_object_or_404(positions,id=pk)
+	form=positionForm(instance=cat)
+	if request.method == 'POST':
+		form=positionForm(request.POST,instance=cat)
+		if form.is_valid:
+			form.save()
+			return redirect('postion_view')
+	context={'form':form}
+	return render(request,'Zusa_admin/add_postion_poll.html',context)

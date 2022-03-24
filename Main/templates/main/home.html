@@ -1,44 +1,17 @@
 {% extends "main/base.html" %}
+{% load embed_video_tags %}
 {%load static%}
 {%block content%}
 <style>
-.a{
-    padding: 1.2rem 0;
+  .card-img-top{
+    object-fit: cover;
+    object-position: center center;
+    background-repeat: no-repeat;
+    height:400px;
   }
-   .btn{
-    padding: 1rem 1.5rem;
-    margin-top: 1px;
-    margin-left:2px ;
-    margin-right: 10px;
-  }
-.items{
-        display: block;
-        width: 100%; 
-        object-fit: cover;
-        object-position: center center;
-        background-repeat: no-repeat;
-        height:500px;
-   }
-  .hero {
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    z-index: 2;
-}
-
-.hero::after {
-    content: "";
-    width: 100%;
-    height: 30%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color:#6f42c1;
-    z-index: -1;
-}
-</style >
+</style>
 <link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
+<link href="{% static 'main/css/default.css' %}" rel="stylesheet">
  <!--slider image-->
     <div id="slides" class="carousel slide" data-ride="carousel">
 	    <ul class="carousel-indicators">
@@ -52,13 +25,13 @@
 		        <img class="items" src="{{ pages.image.url}}" alt="First slide">
 		        <div class="carousel-caption  d-md-block">
                   <div class="col-lg-7 mx-auto text-center">
-                    <a href="{% url 'login'%}" class="btn me-2 btn-primary">LOGIN</a>
+                    <a href="{% url 'login'%}" class="btn btn-primary">LOGIN</a>
                     <a  data-toggle="modal" data-target="#exampleModal2" class="btn btn-primary">REGISTER</a>
                   </div>    
 		  		    <h1>{{pages.title}}</h1>
-		  		    <p>{{pages.sub_title}}</p>
+		  		    <p class="lead">{{pages.sub_title}}</p>
 		   	    </div>
-		      </div>
+          </div>  
 	      {% endfor %}
 	    </div>
     </div>
@@ -104,12 +77,12 @@
         <div class="col-md-4">
           <div class="card">
             {% if teams.Video %}
-            <video  controls="controls" class="card-vd">
-               <source src="{{teams.Video.url}}" type="video/mp4">
+            <video  controls="controls">
+               <source src="{{teams.Video.url}}" type="video/mp4" class="thumbnail" >
             </video>
             {% endif %}
             {% if teams.Photo %}
-            <img src="{{teams.Photo.url}}" alt="{{teams.Name}}" class="card-img-top" /></td>
+            <img src="{{teams.Photo.url}}" alt="{{teams.Name}}"  class="card-img-top" /></td>
             {% endif %}
             <div class="card-body">
               <h3 class="card-title">{{teams.Name}}</h3>
@@ -121,35 +94,31 @@
       </div>
     </div>
     <hr>
+    <section class="s1">
+    <div class="main-container">
+      <h3 style="text-align: center;">Youtube Video </h3>
    
-   <!--Two column section ZUSA RULES AND ORDERS-->
-    <div class="container-fluid padding">
-      <div class="row padding">
-        <div class="col-lg-6">
-          <h1>Our Constitution</h1>
-          <p>This constitution shall have full force of law to all ZUSA members at all faculties, schools, centers, campuses, institutes, and any other institutions of Zetech University as determined by the ZETECH University</p>
-           <h4>Our Objectives</h4>
-            <ul>
-	          	<li>To champion for the welfare of the students</li>
-	          	<li>To seek, enhance and maintain the freedom of conscience, expression, association, academic liberty and all the rights and privileges accruing to members by virtue of their humanity, age, status, sex, citizenship and any other relevant criteria.</li>
-	          	<li>in consultation with the University’s Management, to honor and Certify members of the Student body that have made outstanding contributions to the University in academic and co curricular   activities;</li>
-	          	<li>To provide a meaningful address of student concerns and perspectives through the Principle of democratic representation.</li>
-	          	<li>To develop positive relationships with the general public through participation in community service and other related projects;</li>
-	          	<li>To promote gender, human rights and social equity in policies on education in   ZUSA;</li>
-	          	<li>To foster the relationship between the student community and the university staff, UNIVERSITY management and the general public based on unity and understanding;</li>
-            </ul>
-          <br>
+      <div class="post-wrapper">
+        {% for item in video %}
+        <div>
+          <div class="post">
+           <div class="thumbnail">
+             {% video item.Video '100% x 120%' %}
+           </div>
+            <div class="post-preview">
+              <h6 class="post-title">{{item.Name}}</h6>
+              <p class="post-intro">{{item.sub_Title}}</p>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <img src="{% static 'main/imgs/logo.jpg'%}" class="imgs-fluid">
-        </div>
+        {% endfor %}
       </div>
-   </div>
-
-
-
-
-    
+    </div>
 
 {% endblock %}
 
+
+
+
+
+ class="card-vd"

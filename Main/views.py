@@ -15,7 +15,8 @@ def home(request):
 	team=Zetechteam.objects.all()
 	page=Page.objects.all()
 	cat_menu=Club.objects.all()
-	context={'team':team,'page':page,'cat_menu':cat_menu}
+	video=Youtube.objects.all()
+	context={'team':team,'page':page,'cat_menu':cat_menu,'video':video}
 	return render(request,'main/home.html',context)
 
 

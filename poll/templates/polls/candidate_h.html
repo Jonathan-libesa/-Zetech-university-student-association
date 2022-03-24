@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Candidate{% endblock %}
+{% block content %}
+<link href="{% static 'main/css/poll.css' %}" rel="stylesheet">
+{% include 'main/messages.html'%} 
+<!--cards-->
+<br>
+<div class="row col-md-12 mb-2 justify-content-center">
+ <a href="{% url 'polls' %}" class="btn btn-primary btn-block col-sm-2">BACK TO POLL</a>
+</div>
+<form action="" method="POST">
+{% csrf_token %}
+<div class="card card-body">
+  <h5 class="card-header" id="title">ZUSA ELECTIONS </h5>
+</div>
+  <table class="table table-bordered table-sm text-center" id="cand">
+    <thead>
+      <tr>
+        <th>CANDIDATE IMAGE</th>
+        <th>CANDIDATE NAME</th>
+        <th>POSITION</th>
+        <th>SELECT</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in obj.candidate_set.all %}
+        <tr>
+          <td><img src="{{c.Photo.url}}" alt="Profile_Pic" class="img" /></td>
+          <td for="id_{{c.id}}">{{c.first_name }} {{c.last_name }}</td>
+          <td for="id_{{c.id}}">{{c.position}}</td>
+          <!--td>{{ cand.total_votes }}</td-->
+          <td><input type="radio" id="id_{{c.id}}" name="{{ c.position}}" value="{{c.id}}" class="btn btn-outline-success btn-lg" required></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    <div class="row col-md-12 mb-2 justify-content-center">
+      <button type="submit" class="btn btn-success btn-block col-sm-2" value="VOTE">VOTE</a>
+    </div>
+</form>
+{% endblock %}

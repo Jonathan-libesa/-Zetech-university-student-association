@@ -1,0 +1,49 @@
+{% extends 'main/base.html'%}
+{% load static %}
+{% block title %} Polls-page{% endblock %}
+{% block content %}
+{% include 'main/messages.html'%}
+<style>
+  body{
+    background-color:#ebeff5 ;
+  }
+</style>
+<!-- Main style sheet -->
+    <link href="{% static 'main/css/clubs.css' %}" rel="stylesheet">
+<br>
+<div class="container-fluid">
+  {% for i in elec %}
+    <div class="card card-body">
+      <h5 class="card-header"style="text-align: center;">{{i.Election_Title}}</h5>
+    </div>
+ {% endfor %}
+ <br>
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <table class="table table-sm" >
+        <tr>  
+          <th>Position</th> 
+          <th>Vote</th>
+        </tr>
+          {% for i in obj %}
+            <tr class="product-box">
+             <td style="text-transform: uppercase;">{{i.Name}}</td>
+             <td><a class="btn btn-success btn-sm" href="{% url 'candidate' i.id %}">Vote</a></td>
+            </tr>
+          {% empty %}
+            <tr>
+             <td colspan="8" class="text-center bg-warning">THERE IS NO AVAILABLE ELECTION</td>
+            </tr>
+          {%endfor%}
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row col-md-12 mb-2 justify-content-center">
+    <a href="{% url 'result_page' %}" class="btn btn-primary btn-block col-sm-4" >RESULT</a>
+ </div>
+</div>
+{% include 'main/pagination.html' %}
+{% endblock %}

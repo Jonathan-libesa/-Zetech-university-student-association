@@ -1,0 +1,70 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Candidate{% endblock %}
+{% block content %}
+<link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+<link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
+<style>
+.img-area{
+    width: 100px;
+    height: 100px;
+    border: 5px solid #fff;
+    
+    border-radius: 50%;
+}
+.profile-pic img{
+    width: 100%;
+}
+.profile-pic{
+      border: 5px solid #fff;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      border-radius: 100%;
+      }
+</style>
+  {% include 'main/messages.html'%} 
+<!--cards-->
+<br>
+<div class="row col-md-12 mb-2 justify-content-center">
+ <a href="{% url 'polls' %}" class="btn btn-primary btn-block col-sm-2">BACK TO POLL</a>
+</div>
+<form action="" method="POST">
+{% csrf_token %}
+<div class="container-fluid">
+    <div class="row padding">
+      {% for c in obj.candidate_set.all %}
+        <div class="col-md-4">
+           <div class="card">
+                <img src="{{c.Photo.url}}"  class="profile-pic">
+                <div class="card-body">
+                  <h3 class="card-text text-center"for="id_{{c.id}}">Reg_No:<small> {{c.reg_no}}</small></h3>
+                  <h5 class="card-text text-center" for="id_{{c.id}}">Name:<small>{{c.first_name}} {{c.last_name}}</small></h5>
+                  <hr class="divider"  style="max-width: calc(100%)">
+                  <span><p class="card-header text-center">Position:{{c.position}}</p></span>
+                  <hr class="divider"  style="max-width: calc(100%)">
+                   <input type="radio" id="id_{{c.id}}" name="{{ c.position}}" value="{{c.id}}" class="btn btn-outline-success btn-lg" required>
+
+                </div>
+            </div>
+            <br>
+        </div>
+       {% empty %}
+            <div class="col-md-12">
+               <div class="card">
+                    <div class="card-body">
+                      <hr class="divider"  style="max-width: calc(100%)">
+                      <br>
+                      <p class="card-text text-black "style="text-align: center;">NO CANDIDATES TO DISPLAY</p>
+                      <hr class="divider"  style="max-width: calc(100%)">
+                    </div>
+                </div>
+            </div>
+       {% endfor %}
+    </div>
+    <div class="row col-md-12 mb-2 justify-content-center">
+      <button type="submit" class="btn btn-success btn-block col-sm-2" value="VOTE">VOTE</a>
+    </div>
+</div>
+</form>
+{% endblock %}

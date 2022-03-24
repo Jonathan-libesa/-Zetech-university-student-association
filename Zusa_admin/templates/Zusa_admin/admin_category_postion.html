@@ -1,0 +1,42 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{%load static%}
+{%block title%}
+Postion_catergory
+{% endblock%}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <div class="row col-md-12 mb-2 justify-content-center">
+  <a href="{% url 'add_postion' %}"class="btn btn-info btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create New Postion</a>
+ </div> 
+</head>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Poll Categories</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Category Name</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+
+        </tr>
+      </thead>
+      {% for t in cat %}
+      <tr>
+        <td> {{t.Name}}</td>
+        <td>{{t.status}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'edit_position' t.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete_position' t.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock content %}

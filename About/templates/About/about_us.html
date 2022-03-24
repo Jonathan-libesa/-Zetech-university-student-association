@@ -1,0 +1,138 @@
+{% extends 'main/base.html'%}
+{%load static%}
+{%block title%}
+About Zusa
+{%endblock%}
+{%block content%}
+<style>
+    .imgs-fluid{
+    display: block;
+    object-fit: cover;
+    width: 350px;
+    height: 250px;
+    border:1px solid var(--borderColor);
+  }
+</style>
+<link href="{% static 'main/css/default.css' %}" rel="stylesheet">
+<body>
+{% include 'main/messages.html'%}
+	<section class="s1">
+		<div class="main-container">
+			<div class="greeting-wrapper">
+				<h1>ABOUT US</h1>
+			</div>
+
+
+			<div class="intro-wrapper">
+				<div class="nav-wrapper">
+
+					<!-- Link around dots-wrapper added after tutorial video -->
+					<a href="{% url 'about' %}">
+						<div class="dots-wrapper">
+							<div id="dot-1" class="browser-dot"></div>
+							<div id="dot-2" class="browser-dot"></div>
+							<div id="dot-3" class="browser-dot"></div>
+						</div>
+					</a>
+					
+				</div>
+
+				<div class="left-column">
+					<img class="imgs-fluid" src="{% static 'main/imgs/logo.jpg' %}"><br><br>
+					<h5 style="text-align: center;line-height: 0;">zetech university student association</h5>
+				</div>
+
+				<div class="right-column">
+
+					<div id="preview-shadow">
+						<div id="preview">
+							<div id="corner-tl" class="corner"></div>
+							<div id="corner-tr" class="corner"></div>
+							<h3>What We Do</h3>
+							<p>To champion for the welfare of the students.</p>
+							<p>To seek, enhance and maintain the freedom of conscience, expression, association, academic liberty and all the rights and privileges accruing to members by virtue of their humanity, age, status, sex, citizenship and any other relevant criteria</p>
+							<div id="corner-br" class="corner"></div>
+							<div id="corner-bl" class="corner"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+
+			<div class="about-wrapper">
+				<div class="about-me">
+					<h4>More about us</h4>
+					<h4>Our Objectives</h4>
+		            <ul>
+		              <li>To champion for the welfare of the students</li><br>
+
+		              <li>To seek, enhance and maintain the freedom of conscience, expression, association, academic liberty and all the rights and privileges accruing to members by virtue of their humanity, age, status, sex, citizenship and any other relevant criteria.</li><br>
+
+		              <li>in consultation with the University’s Management, to honor and Certify members of the Student body that have made outstanding contributions to the University in academic and co curricular   activities;</li>
+		              
+		            </ul>
+
+					<hr class="divider"  style="max-width: calc(100%)">
+
+					<h4>Download The Files To Understand More</h4>
+					{% for download in abouts %}
+              		{% if download.file %}
+						<p>The File contains more information  <a target="_blank" href="{{download.file.url}}" download="{{download.file.url}}">Download Resume</a></p>
+					{% endif %}
+					{% endfor %}
+
+				</div>
+		           <div class="skills">
+			          <div class="feature-item d-flex">
+			            <i class="ti-cup"></i>
+			            <div class="ml-20">
+			              <h4>Functions of ZUSA parliament</h4>
+			              <ul>
+			              	<li>Be the supreme policy and legislative organ of ZUSA</li>
+			              	<li>Uphold and protect the Constitution of ZUSA</li>
+							<li>Shall hear and debate the chairperson’s address on the state of ZUSA which shall be in</li>
+							<li>To provide a meaningful address of student concerns and perspectives through the Principle of democratic representation.</li>
+				             <li>To develop positive relationships with the general public through participation in community service and other related projects;</li>	
+					      </ul>
+			            </div>
+			          </div>
+		           </div>
+			</div>
+
+		</div>
+	</section>
+
+	
+
+	<section class="s2">
+		<div class="main-container">
+			<a href=""></a>
+			<h3 style="text-align: center;">Get In Touch</h3>
+       
+			<form id="contact-form" method="post" action="{% url 'about' %}">
+				<a name="contact"></a>
+				{% csrf_token %}
+				<label>Name</label>
+				<input class="input-field" type="text" name="name">
+
+				<label>Subject</label>
+				<input class="input-field" type="text" name="subject">
+
+				<label>Email</label>
+				<input class="input-field" type="text" name="email">
+
+				<label>Message</label>
+				<textarea class="input-field" name="message"></textarea>
+
+				<input id="submit-btn" type="submit" value="Send">
+			</form>
+		</div>
+	</section> 
+
+	
+</body>
+{% endblock %}

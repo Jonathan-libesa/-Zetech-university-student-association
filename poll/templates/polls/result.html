@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{%load static%}
+<title>{%block title%}Result Page{%endblock%}</title>
+{%block content%}
+<!-- Main style sheet -->
+<link href="{% static 'main/css/poll.css' %}" rel="stylesheet">
+<div class="card card-body">
+  <h5 class="card-header" id="title">ZUSA ELECTIONS RESULTS</h5>
+</div>
+{% for caty in caty_list %}
+  <h6 class="card-header" id="title">{{caty.Name}}</h6><br>
+  
+  <table class="table table-bordered table-sm text-center" id="cand">
+    <thead>
+      <tr>
+        <th>CANDIDATE IMAGE</th>
+        <th>CANDIDATE ELECT</th>
+        <th>TOTAL VOTE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cand in caty.candidate_set.all %}
+        <tr>
+          <td><img src="{{cand.Photo.url}}" alt="Profile_Pic" class="img" /></td>
+          <td>{{cand.first_name }} {{cand.last_name }}</td>
+          <td>{{ cand.total_votes }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endfor %}
+{% endblock %}
