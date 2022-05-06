@@ -50,7 +50,7 @@ def Club_details(request,pk):
 		else:
 			is_following = False
 	context={'cat_menu':cat_menu,'career':career,'number_of_participants':number_of_participants,'is_following':is_following,'participants':participants}
-	return render(request,'main/detail.html',context)
+	return render(request,'main/details.html',context)
 
 
 
@@ -82,7 +82,7 @@ def addparticipants(request,pk):
 def removeparticipants(request,pk):
 	career=get_object_or_404(Club,id=pk)
 	career.participants.remove(request.user)
-	messages.warning(request,'You have Left the Club Sucessfully')
+	messages.warning(request,'You have Left the Club')
 	return redirect('details',pk=career.pk)
 
 
@@ -165,6 +165,7 @@ def groupfollower(request,pk):
 			is_following = False
 	context={'number_of_participants':number_of_participants,'is_following':is_following,'participants':participants}
 	return render(request,'main/Participants.html',context)
+
 
 
 # Load More

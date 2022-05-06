@@ -1,6 +1,7 @@
-from django.db import models
+from django.db import models 
 from Users.models import User
 from django.core.exceptions import ValidationError
+from django.db.models import Sum
 # Create your models here.
 
 STATUS = (
@@ -42,6 +43,7 @@ class candidate(models.Model):
 		
 	def __str__(self):
 		return self.first_name
+
 
 class ControlVote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

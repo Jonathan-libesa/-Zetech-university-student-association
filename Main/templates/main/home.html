@@ -9,6 +9,18 @@
     background-repeat: no-repeat;
     height:400px;
   }
+  #button{
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+
+  }
 </style>
 <link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
 <link href="{% static 'main/css/default.css' %}" rel="stylesheet">
@@ -86,7 +98,10 @@
             {% endif %}
             <div class="card-body">
               <h3 class="card-title">{{teams.Name}}</h3>
-              <p class="card-text">{{teams.Bio}}</p>
+               <p class="full-content" id="full-{{teams.id}}" style="display: none;">{{ teams.Bio }}<br><button data-id="{{teams.id}}" href="javascript:void();" 
+                id="button" class="show-hide-btn">read less</button></p>
+               <p class="half-content" id="half-{{teams.id}}">{{ teams.Bio|truncatechars:150 }} <br><button id="button" data-id="{{teams.id}}" href="javascript:void();" class="show-hide-btn">read more</button></p>              
+               <!--p class="card-text">{{teams.Bio}}</p-->
             </div>
           </div>
         </div>
@@ -114,11 +129,9 @@
         {% endfor %}
       </div>
     </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{% static 'main/js/main.js'%}"></script>
 
 {% endblock %}
-
-
-
-
 
  class="card-vd"

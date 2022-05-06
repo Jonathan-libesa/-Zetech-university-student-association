@@ -157,14 +157,14 @@ USE_TZ = True
 #https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATIC_URL = '/MEDIA/'
-MEDIA_URL='/Main/'
-STATICFILES_DIRS =[
- os.path.join(BASE_DIR,'static')
-]
-MEDIA_ROOT = os.path.join(BASE_DIR,'MEDIA/Main')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_URL = '/static/'
+#STATIC_URL = '/MEDIA/'
+#MEDIA_URL='/Main/'
+#STATICFILES_DIRS =[
+ #os.path.join(BASE_DIR,'static')
+#]
+#MEDIA_ROOT = os.path.join(BASE_DIR,'MEDIA/Main')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -192,7 +192,7 @@ AWS_STORAGE_BUCKET_NAME = 'zusa'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_REGION_NAME = "us-east-2" # your region
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 

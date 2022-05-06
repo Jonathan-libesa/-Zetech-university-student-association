@@ -64,16 +64,10 @@ body{
 }
 
 
-#row1{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+
 #card01{
-  background-color: darkgray;
-  position: relative;
-  margin-left:20px;
+  background-color: purple;
+  text-decoration: none;
 }
 
 @media(max-width=800px){

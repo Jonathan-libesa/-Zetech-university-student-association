@@ -1,0 +1,111 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+{{career.Name}}
+{% endblock %}
+{% block content %}
+<!-- Main style sheet -->
+  <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'main/css/clubs.css' %}" rel="stylesheet">
+  <br> 
+<style>
+	#card02{
+		background-color: purple;
+		text-decoration: none;
+	}
+	#row1{
+	  width: 100%;
+	  display: flex;
+	  justify-content: center;
+	  flex-wrap: wrap;
+    margin-left:5px;
+	 }
+   .card-header {
+    text-align:center;
+    color:dark ;
+    font-weight: 100px;
+    font-weight: 100px;
+    background-color:#4A51A8 ;
+   }
+</style>
+{% include 'main/messages.html'%}
+<div class="container-fluid">
+  <div class="row padding" id ="row1">
+      <div class="card card-body " id="card02" >
+          <div class="profile">
+              {% if career.profile_pic %}
+              <div class="profile_pic">
+                <div>
+                  <img  class="profile_pic" src="{{career.profile_pic.url}}" />
+                </div>
+              </div>
+              {% endif %}
+              <div class="profile__info">
+                <h3 class="text-center text-white"><a href="{% url 'clubuser' %}">{{career.Name}}</a></h3>
+                <h5 class="card-title" style="text-align:center;">MEMBERS:{{number_of_participants}}</h5>
+                <p style="text-transform:uppercase;"></p>
+                 {% if career.Chairperson %}
+                  <p style="text-transform:uppercase;">Chairperson:<a href="{% url 'user-profile' career.Chairperson.pk %}"> {{career.Chairperson.first_name}}  {{career.Chairperson.last_name}}</a></p>
+                  {% endif %}
+                  {% if career.Parton %}
+                  <p style="text-transform:uppercase;">Patron:<a href="{% url 'user-profile' career.Parton.pk %}">{{career.Parton.first_name}} {{career.Parton.last_name}}</a></p>
+                  {% endif %}
+                  <p style="text-transform:uppercase;">Contact: {{career.Contact}}</p>    
+              </div>
+              {% include 'main/clubrequirement.html' %}
+          </div>
+      </div>
+  </div>
+ <br><br>
+</div>
+<div class="container-fluid">
+	<div class="row padding">
+		<div class="col-md-4">
+		<div class="card">
+		    <div class="card-body">
+			    <h5 class="card-header">&#8592; ABOUT CLUB</h5>
+			   <p class="full-content" id="full-{{career.id}}" style="display: none;">{{ career.About }}<br><button data-id="{{career.id}}" href="javascript:void();" id="button" class="show-hide-btn">read less</button></p>
+          <p class="half-content" id="half-{{career.id}}">{{career.About|truncatechars:250 }} <br><button id="button" data-id="{{career.id}}" href="javascript:void();" class="show-hide-btn">read more</button></p>
+		    </div>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="card">
+		    <div class="card-body">
+			  <h5 class="card-header">&#8592; MEET UP PLACE</h5>
+			  <p>{{career.Meeting_place}}</p>
+		    </div>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="card">
+		    <div class="card-body">
+			    <h5 class="card-title"><a href="{% url 'Clubevent' career.pk %}">&#8592; VIEW EVENTS</a></h5>
+			    <p class="card-text">This shows all the recent events of the club  .</p>
+		    </div>
+        </div>
+        </div>
+	</div>
+	<br><br>
+	<div class="row padding">
+		{% if request.user == career.Parton %}
+		<div class="row col-md-12 mb-2 justify-content-center">
+    <a href="{% url 'editclub' career.id %}"class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i>Edit Club Profile</a>
+    <br>
+    <a href="{% url 'Add-event' career.id %}"class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Add Events to Club</a>
+    <a href="{% url 'followers' career.id %}"class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"></i>Members of the club</a>
+    {% endif %}
+    {% if request.user == career.Chairperson %}
+		<div class="row col-md-12 mb-2 justify-content-center">
+    <a href="{% url 'editclub' career.id %}"class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i>Edit Club Profile</a>
+    <br>
+    <a href="{% url 'Add-event' career.id %}"class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Add Events to Club</a>
+    <a href="{% url 'followers' career.id %}"class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"></i>Members of the club</a>
+    {% endif %}
+    </div> 
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{% static 'main/js/main.js'%}"></script> 
+
+{% endblock%}

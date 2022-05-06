@@ -1,5 +1,6 @@
 from django.db import models
 from Users.models import User
+from ckeditor.fields import RichTextField
 from autoslug import AutoSlugField
 from mimetypes import guess_type
 # Create your models here.

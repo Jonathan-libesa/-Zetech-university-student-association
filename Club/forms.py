@@ -10,7 +10,7 @@ class ClubForm(ModelForm):
 	profile_pic=forms.ImageField(required=False, validators=[file_size])
 	class Meta:
 		model=Club
-		fields=['Name','profile_pic','Contact','About','Meeting_place']
+		fields=['Name','profile_pic','Contact','About','Meeting_place','Requirements']
 		exclude=['Chairperson','Parton','participants']
 
 
