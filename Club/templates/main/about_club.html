@@ -1,0 +1,100 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+About Club
+{% endblock %}
+{% block content %}
+<link href="{% static 'main/css/agency.css' %}" rel="stylesheet">
+ <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="section-heading"> More About</h1>
+                    <h3 class="section-subheading text-muted">Understand More About the Club </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="{{career.profile_pic.url}}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">{{career.Name}}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                    	{{career.About}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="{% static 'main/imgs/3.jpg' %}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Club Requirements</h4>
+                                    <h4 class="subheading">Read Carefully </h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{career.Requirements}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% if career.Chairperson %}
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="{{career.Chairperson.profile_pic.url}}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4> Club Leader </h4>
+                                    <h4 class="subheading"> {{career.Chairperson.first_name}}  {{career.Chairperson.last_name}}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted"> {{career.Chairperson.Bio}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% if career.Parton  %}
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="{{career.Parton.profile_pic.url}}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4> Club Leader </h4>
+                                    <h4 class="subheading"> {{career.Parton.first_name}}  {{career.Parton.last_name}}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted"> {{career.Parton.Bio}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Club!<h4>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Be Part of Us</h4>
+                                    <p class="text-muted">By Clicking The button Jion and Get more !</p>
+                                    {% include 'main/clubrequirement.html' %}
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

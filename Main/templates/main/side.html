@@ -24,7 +24,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% for item in cat_menu %}
-              <a class="dropdown-item"href="{% url 'details' item.pk|slugify%}">{{item}}</a>
+              <a class="dropdown-item"href="{% url 'details' item.pk|slugify %}">{{item}}</a>
               {% endfor %}
             </div>
         </li>

@@ -13,6 +13,7 @@ urlpatterns = [
     path('updateevent/<str:pk>',views.EditEvent,name="edit-event"),
     path('participants_club_users/<str:pk>',views.groupfollower,name="followers"),
     path('Delete-Event/<str:pk>',views.DeleteEvent,name="delete-event"),
+    path('About_club/<str:pk>',views.aboutclub,name="about_club"),
     #path('load-more-data',views.load_more_data,name='load_more_data'),
     #path('load-more',views.load_more,name='load-more'),
     ]

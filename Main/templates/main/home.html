@@ -18,8 +18,16 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-
-
+  }
+  .ho:hover{
+    text-shadow: none !important;
+    box-sizing: border-box !important;
+    cursor: pionter !important;
+    transition: all 0.3s ease !important; 
+    -webkit-transform: scale(1.1) !important;
+    -ms-transform: scale(1.1) !important;
+    transform: scale(1.1) !important;
+    z-index: 2;
   }
 </style>
 <link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
@@ -86,8 +94,8 @@
     <div class="container-fluid">
       <div class="row padding">
         {% for teams in team %}
-        <div class="col-md-4">
-          <div class="card">
+        <div class="col-md-4 wow fadeInLeft slow">
+          <div class="card ho">
             {% if teams.Video %}
             <video  controls="controls">
                <source src="{{teams.Video.url}}" type="video/mp4" class="thumbnail" >
@@ -131,7 +139,12 @@
     </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="{% static 'main/js/main.js'%}"></script>
-
+<script type="
+">
+  $(document).ready(function(){
+    new WOW().init();
+  });
+</script>
 {% endblock %}
 
  class="card-vd"

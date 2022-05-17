@@ -38,6 +38,7 @@ AUTH_USER_MODEL='Users.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'Club',
     'embed_video',
     'poll',
     'Zusa_admin',
@@ -47,7 +48,6 @@ INSTALLED_APPS = [
     'hitcount',
     'Post',
     'ckeditor',
-    'Club',
     'Main',
     'Student',
     'Alumni',
@@ -97,22 +97,23 @@ WSGI_APPLICATION = 'Site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+
 #DATABASES = {
     #'default': {
-       # 'ENGINE': 'django.db.backends.postgresql',
-       # 'NAME':'zusa_1' ,
-       #'USER':'jonathan',
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME':'zusa_1' ,
+        #'USER':'jonathan',
         #'PASSWORD':'kenya2016',
         #'HOST':'database-1.czyinufhmlcb.us-east-2.rds.amazonaws.com',
         #'PORT':'5432'
     #}
 #}
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from.models import Announcement
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from Club .models import*
+from Club.models import*
 # Create your views here.
 
 

@@ -167,6 +167,17 @@ def groupfollower(request,pk):
 	return render(request,'main/Participants.html',context)
 
 
+#TO SHOW MORE ABOUT THE CLUBS 
+@login_required(login_url='login')
+def aboutclub(request,pk):
+	career=get_object_or_404(Club,id=pk)
+	events=Event.objects.filter(Club_Name=pk)
+	cat_menu=Club.objects.all()
+	context={'career':career,'cat_menu':cat_menu,'events':events}
+	return render(request,'main/about_club.html',context)
+
+
+
 
 # Load More
 def load_more(request):
