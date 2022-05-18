@@ -30,13 +30,10 @@
     z-index: 2;
   }
   .item{
-  display: block;
   margin: auto;
   width: 100%;
   object-fit: cover;
-  object-position: center center;
-  background-repeat: no-repeat;
-  height: 600px;
+  height: 450px;
   }
 </style>
 <link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
@@ -57,7 +54,7 @@
                     <a href="{% url 'login'%}" class="btn btn-primary">LOGIN</a>
                     <a  data-toggle="modal" data-target="#exampleModal2" class="btn btn-primary">REGISTER</a>
                   </div>    
-		  		    <h1>{{pages.title}}</h1>
+		  		    <h3>{{pages.title}}</h3>
 		  		    <p class="lead">{{pages.sub_title}}</p>
 		   	    </div>
           </div>  
