@@ -29,6 +29,15 @@
     transform: scale(1.1) !important;
     z-index: 2;
   }
+  .item{
+  display: block;
+  margin: auto;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  background-repeat: no-repeat;
+  height: 600px;
+  }
 </style>
 <link href="{% static 'main/css/Homepage.css' %}" rel="stylesheet">
 <link href="{% static 'main/css/default.css' %}" rel="stylesheet">
@@ -42,7 +51,7 @@
 	    <div class="carousel-inner">
 	    	{% for pages in page %}
 		      <div class="carousel-item{% if forloop.counter0 == 0%} active {% endif %}">
-		        <img class="items" src="{{ pages.image.url}}" alt="First slide">
+		        <img class="item" src="{{ pages.image.url}}" alt="First slide">
 		        <div class="carousel-caption  d-md-block">
                   <div class="col-lg-7 mx-auto text-center">
                     <a href="{% url 'login'%}" class="btn btn-primary">LOGIN</a>

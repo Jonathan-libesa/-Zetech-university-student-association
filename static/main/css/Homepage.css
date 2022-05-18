@@ -17,15 +17,7 @@
   color:#6f42c1 ;
   display: block;
 }
-.items{
-  display: block;
-  margin: auto;
-  width: 100%;
-  object-fit: cover;
-  object-position: center center;
-  background-repeat: no-repeat;
-  height: 450px;
-}
+ 
 .card-imgs-top{
     object-fit: cover;
     object-position: center center;
