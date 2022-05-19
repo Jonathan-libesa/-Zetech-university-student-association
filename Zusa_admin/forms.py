@@ -97,3 +97,8 @@ class  positionForm(forms.ModelForm):
     class Meta:
         model= positions
         fields='__all__'
+
+class  candidateForm(forms.ModelForm):
+    class Meta:
+        model= candidate
+        fields='__all__'

@@ -55,7 +55,15 @@ urlpatterns = [
     path('postion_view', views.admin_postion,name='postion_view'),
     path('admin-delete-position/<str:pk>', views.admin_postion_delete,name='delete_position'),
     path('Edit_position/<str:pk>', views.position_edit,name='edit_position'),
-   
+    path('candidate_view', views.admin_candidate_view,name='candidate_view'),
+    path('create_candidate', views.add_candidate,name='add_cand'),
+    path('candidate_edit/<str:pk>', views.candidate_edit,name='edit_cand'),
+    path('admin-cand-delete/<str:pk>', views.admin_cand_delete,name='delete_cand'),
+    
+
+    
+
+
     
 
 

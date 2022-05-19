@@ -660,3 +660,54 @@ def position_edit(request,pk):
 			return redirect('postion_view')
 	context={'form':form}
 	return render(request,'Zusa_admin/add_postion_poll.html',context)
+
+
+
+#TO VIEW CANDIDATE FOR ELECTION 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def admin_candidate_view(request):
+	caty_list = positions.objects.all()
+	cand=candidate.objects.all()
+	context={'cand':cand,'caty_list':caty_list}
+	return render(request,'Zusa_admin/candidate_view.html',context)	
+
+
+#TO ADD CANDIDATE IN  POLLS 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def add_candidate(request):
+	form=candidateForm()
+	if request.method == 'POST':
+		form=candidateForm(request.POST,request.FILES)
+		if form.is_valid:
+			form.save()
+			return redirect('candidate_view')
+	context={'form':form}
+	return render(request,'Zusa_admin/add_candidate.html',context)
+
+
+#TO EDIT CANDIDATE POLL
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def candidate_edit(request,pk):
+	cand=get_object_or_404(candidate,id=pk)
+	form=candidateForm(instance=cand)
+	if request.method == 'POST':
+		form=candidateForm(request.POST,request.FILES,instance=cand)
+		if form.is_valid:
+			form.save()
+			return redirect('candidate_view')
+	context={'form':form}
+	return render(request,'Zusa_admin/add_candidate.html',context)
+
+
+#TO DELETE CANDIDATE  IN POLL
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def admin_cand_delete(request,pk):
+    cand=get_object_or_404(candidate,id=pk)
+    if cand.Photo:
+    	cand.Photo.delete()
+    cand.delete()
+    return HttpResponseRedirect('/candidate_view')

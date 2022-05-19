@@ -1,0 +1,40 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{%load static%}
+<title>{%block title%}Candidate view{%endblock%}</title>
+{%block content%}
+<!-- Main style sheet -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="{% static 'main/css/poll.css' %}" rel="stylesheet">
+<div class="row col-md-12 mb-2 justify-content-center">
+  <a href="{% url 'add_cand'%}"class="btn btn-info btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create Candidate</a>
+</div> 
+{% for caty in caty_list %}
+  <h6 class="card-header" id="title"> POSITION: {{caty.Name}}</h6><br>
+  
+  <table class="table table-bordered table-sm text-center" id="cand">
+    <thead>
+      <tr>
+        <th>Photo</th>
+        <th>Candidate Reg_Number</th>
+        <th>Candidate Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cand in caty.candidate_set.all %}
+        <tr>
+        <td><img src="{{cand.Photo.url}}" alt="Profile Pic" class="img" /></td>
+        <td> {{ cand.reg_no}}</td>
+        <td> {{ cand.first_name}} {{ cand.last_name}}</td>
+        <td><a class="btn btn-info btn-xs" href="{% url 'edit_cand' cand.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete_cand'  cand.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endfor %}
+{% endblock %}
+
+
+
