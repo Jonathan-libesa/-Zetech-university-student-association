@@ -102,3 +102,10 @@ class  candidateForm(forms.ModelForm):
     class Meta:
         model= candidate
         fields='__all__'
+
+
+
+class  youtubeForm(forms.ModelForm):
+    class Meta:
+        model= Youtube
+        fields='__all__'
