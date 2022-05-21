@@ -100,10 +100,10 @@ WSGI_APPLICATION = 'Site.wsgi.application'
 
 
 #DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.postgresql',
-        #'NAME':'zusa_1' ,
-        #'USER':'jonathan',
+   # 'default': {
+     #   'ENGINE': 'django.db.backends.postgresql',
+      #  'NAME':'zusa_1' ,
+       # 'USER':'jonathan',
         #'PASSWORD':'kenya2016',
         #'HOST':'database-1.czyinufhmlcb.us-east-2.rds.amazonaws.com',
         #'PORT':'5432'

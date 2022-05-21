@@ -15,6 +15,7 @@ class Club(models.Model):
 	participants = models.ManyToManyField(User, related_name='participants', blank=True,default=0, editable=False)
 	Meeting_place=models.TextField(null=True,blank=True)
 	Requirements=models.TextField(null=True,blank=True)
+	Whatsapp_Group_link=models.URLField(null=True,blank=True)
 	date_created=models.DateTimeField(auto_now_add=True)
 
 

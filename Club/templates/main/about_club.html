@@ -4,6 +4,11 @@
 About Club
 {% endblock %}
 {% block content %}
+<style type="text/css">
+.fa_custom {
+color: #0099CC
+}
+</style>
 <link href="{% static 'main/css/agency.css' %}" rel="stylesheet">
  <!-- About Section -->
     <section id="about">
@@ -86,8 +91,10 @@ About Club
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>Be Part of Us</h4>
-                                    <p class="text-muted">By Clicking The button Jion and Get more !</p>
-                                    {% include 'main/clubrequirement.html' %}
+                                    {% if career.Whatsapp_Group_link%}
+                                    <p class="text-muted">By Clicking The Whatsapp Icon And  Jion Our Whatsapp Group and Get more !</p>
+                                    <a href="{{career.Whatsapp_Group_link}}"><i class="fa fa-whatsapp fa_custom fa-4x" aria-hidden="true"></i></a>
+                                    {% endif %}
                                 </div>
                             </div>
 
