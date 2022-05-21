@@ -59,7 +59,14 @@ urlpatterns = [
     path('create_candidate', views.add_candidate,name='add_cand'),
     path('candidate_edit/<str:pk>', views.candidate_edit,name='edit_cand'),
     path('admin-cand-delete/<str:pk>', views.admin_cand_delete,name='delete_cand'),
-    
+    path('youtube_video', views.youtube_video,name='youtube_video'),
+    path('create_youtube', views.add_youtube,name='add_You'),
+    path('youtube_edit/<str:pk>', views. youtube_edit,name='edit_video'),
+    path('admin-youtube-delete/<int:pk>', views.admin_youtube_delete,name='delete_youtube'),
+
+   
+
+
 
     
 

@@ -1,0 +1,25 @@
+{% extends 'Zusa_admin/adminbase.html' %}
+{% load crispy_forms_tags %}
+{% block title%} Add Youtube Video {%endblock%}
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <!-- Content here -->
+        <div class="card p-2" id="card">
+            <div class="card-titler">
+                <h3 style="text-align:center;">ADD/EDIT Youtube Video </h3>
+            </div>
+                <form method="post" enctype="multipart/form-data"autocomplete="off" >
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-outline-primary">SAVE</button>
+                    </div>
+                <form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

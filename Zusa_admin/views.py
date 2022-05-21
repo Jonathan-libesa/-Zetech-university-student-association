@@ -134,13 +134,14 @@ def admin_view_alumniview_view(request):
     return render(request,'Zusa_admin/admin_alumni_list_view.html',context)
 
 
-# TO SHOW of ALUMNI_FORUM
+# TO SHOW of RESULT OF E-CAMPUS VOTE
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Admin'])
 def admin_view_forum_view(request):
-    forum=Forum.objects.all()
-    context={'forum':forum}
-    return render(request,'Zusa_admin/admin_view_forum.html',context)
+    caty_list = positions.objects.all()
+    cand = candidate.objects.all().order_by('-total_votes',)
+    return render(request, "Zusa_admin/admin_view_forum.html", {'caty_list':caty_list,'cand':cand})
+
 
 # TO UPDATE STUDENT INFORMATION
 @login_required(login_url='login')
@@ -711,3 +712,47 @@ def admin_cand_delete(request,pk):
     	cand.Photo.delete()
     cand.delete()
     return HttpResponseRedirect('/candidate_view')
+
+
+#TO DISPLAY YOUTUBE VIDEO 
+def youtube_video(request):
+	video=Youtube.objects.all()
+	context={'video':video}
+	return render(request,'Zusa_admin/yotubevideo.html',context)
+
+
+#TO ADD YOUTUBE VIDEO   
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def add_youtube(request):
+	form=youtubeForm()
+	if request.method == 'POST':
+		form=youtubeForm(request.POST,request.FILES)
+		if form.is_valid:
+			form.save()
+			return redirect('youtube_video')
+	context={'form':form}
+	return render(request,'Zusa_admin/add_youtube.html',context)
+
+
+#TO EDIT YOUTUBE VIDEO POLL
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def youtube_edit(request,pk):
+	video=get_object_or_404(Youtube,id=pk)
+	form=youtubeForm(instance=video)
+	if request.method == 'POST':
+		form=youtubeForm(request.POST,request.FILES,instance=video)
+		if form.is_valid:
+			form.save()
+			return redirect('youtube_video')
+	context={'form':form}
+	return render(request,'Zusa_admin/add_youtube.html',context)
+
+#TO DELETE YOUTUBE VIDEO  
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def admin_youtube_delete(request,pk):
+    video=get_object_or_404(Youtube,id=pk)
+    video.delete()
+    return HttpResponseRedirect('/youtube_video')

@@ -151,19 +151,16 @@
       <i style=""class="fas fa-bars" id="sidebar_btn"></i>
     </label>
     <div>
-      <img src="{% static 'main/imgs/logo.jpg'%}" width="50" height="30"></a>
+     <a href="{% url 'admin-dashboard'%}"> <img src="{% static 'main/imgs/logo.jpg'%}" width="50" height="30"></a>
     </div>
   </header>
   <!--header area end-->
   <!--sidebar start-->
   <div class="sidebar" style=" margin-top: 50px;">
     <center>
-
-      <img src="{{request.user.profile_pic.url}}" class="profile_image" alt="">
-      <h4>{{request.user.username}}</h4>
-
+      <img src="{{request.user.profile_pic.url}}" class="profile_image" alt=""> 
     </center>
-
+    <a href="{% url 'user_profile' %}"><i class="fas fa-user-circle"></i><span>Profile</span></a>
     <a href="{% url 'admin-dashboard' %}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
     <a href="{% url 'User' %}"><i class="fas fa-home"></i><span>Home Site</span></a>
     <a href="{% url 'admin_home' %}"><i class="fas fa-cog"></i><span>Home-page change</span></a>
