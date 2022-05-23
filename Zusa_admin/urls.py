@@ -63,6 +63,7 @@ urlpatterns = [
     path('create_youtube', views.add_youtube,name='add_You'),
     path('youtube_edit/<str:pk>', views. youtube_edit,name='edit_video'),
     path('admin-youtube-delete/<int:pk>', views.admin_youtube_delete,name='delete_youtube'),
+    path('create-pdf', views.pdf_report_create, name='create-pdf'),
 
    
 

@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import JsonResponse
 from django.db.models import F
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 # Create your views here.
 
 @login_required(login_url='login')
@@ -41,6 +43,8 @@ def resultView(request):
     caty_list = positions.objects.all()
     cand = candidate.objects.all().order_by('-total_votes',)
     return render(request, "polls/result.html", {'caty_list':caty_list,'cand':cand})
+
+
 
 
 #@login_required(login_url='login')

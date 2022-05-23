@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,reverse,get_object_or_404
 from django.db.models import Sum
 from django.contrib.auth.models import Group
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from datetime import date, timedelta
@@ -19,6 +19,8 @@ from django.core.paginator import Paginator
 from.forms import*
 from poll .models import *
 from Users.decorators import allowed_users,admin_only
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 @login_required(login_url='login')
 @admin_only
@@ -756,3 +758,31 @@ def admin_youtube_delete(request,pk):
     video=get_object_or_404(Youtube,id=pk)
     video.delete()
     return HttpResponseRedirect('/youtube_video')
+
+
+#TO PRINT PDF FOR ZUSA ELECTION 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Admin'])
+def pdf_report_create(request):
+    caty_list = positions.objects.all()
+    cand = candidate.objects.all().order_by('-total_votes',)
+
+    template_path = 'Zusa_admin/pdfresult.html'
+
+    context = {'caty_list':caty_list,'cand':cand}
+
+    response = HttpResponse(content_type='application/pdf')
+
+    response['Content-Disposition'] = 'filename="products_report.pdf"'
+
+    template = get_template(template_path)
+
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funy view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
